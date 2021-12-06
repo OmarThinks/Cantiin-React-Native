@@ -52,7 +52,7 @@ const Section = ({children, title}): Node => {
   );
 };
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -108,5 +108,33 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+
+
+
+/*
+={
+  this.first:1,
+  second: self.first
+};
+*/
+
+const getTheme=()=>{
+  let theme={};
+  theme.first=1;
+  theme.second=theme.first+1;
+  return theme;
+}
+
+
+let theme = getTheme();
+
+console.log(theme);
+
+
+
+
+
+
 
 export default App;
