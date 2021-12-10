@@ -1,7 +1,7 @@
 import {SafeAreaView, Text, View, ScrollView, FlatList} from 'react-native';
 import React,{useState, useEffect, useContext, useReducer, Fragment} from 'react';
 import styles from '../styles';
-import { ActivityIndicator, Colors, Divider } from 'react-native-paper';
+import { ActivityIndicator, Colors, Divider, Card, Title, Paragraph, Button } from 'react-native-paper';
 
 const axios = require('axios');
 
@@ -9,8 +9,11 @@ const axios = require('axios');
 
 const renderItem = ({ item }) => (
   <Fragment>
-    <Text >{item.id} </Text>
-    <Divider style={{...styles.mainDivider}}/>
+    <Card>
+      <Title>{item.name}</Title>
+      <Paragraph>${item.price}</Paragraph>
+      <Divider style={{...styles.mainDivider}}/>
+    </Card>
   </Fragment>
 );
 
@@ -21,8 +24,8 @@ export default function ProductsList() {
   const [response,setResponse]= useState([]);
   
   useEffect(()=>{
-    axios.get('https://www.cantiin.com/api/products/').then(function (response) {
-    setResponse(response.data); })   
+    //axios.get('https://www.cantiin.com/api/products/').then(function (response) {
+    //setResponse(response.data); })   
   }, [currentPage]);
 
   
@@ -34,28 +37,32 @@ export default function ProductsList() {
   })();
   console.log(loading);  
   
-  console.log(response);
+  console.log("response",response);
 
    return (
         <SafeAreaView>
         <View style={{ backgroundColor: 'blue', ...styles.mainContainer }}>
-          <View style={{ backgroundColor: 'red', ...styles.mainContent }}>
-            <ScrollView style={{backgroundColor:"yellow",}}>
+          <View style={{ ...styles.mainContent }}>
             {loading}
             <SafeAreaView style={{flex: 1}}>
               <FlatList
                 data={response.results}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                ListHeaderComponent={<Divider style={{...styles.mainDivider}}></Divider>}
+                ListFooterComponent={<Divider style={{...styles.mainDivider}}></Divider>}
               />  
             
             </SafeAreaView> 
 
 
-            </ScrollView>
           </View>
           <View style={{ backgroundColor: 'magenta', ...styles.mainFootBar }}>
-            <Text>Wassup</Text>
+          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+          </Button>
+          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+            Press me
+          </Button>
           </View>
         </View>
       </SafeAreaView>
