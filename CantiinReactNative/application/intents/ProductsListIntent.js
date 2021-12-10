@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, Text, View} from 'react-native';
+import {SafeAreaView, Text, View, ScrollView} from 'react-native';
 const axios = require('axios');
 
 export default function ProductsList() {
@@ -9,11 +9,76 @@ export default function ProductsList() {
       });
    return (
         <SafeAreaView>
-        <View style={{width: '100%', height: '100%', backgroundColor: 'blue'}}>
-          <View style={{flexGrow: 1, backgroundColor: 'red', padding: 30}}>
-            <Text>Hi!</Text>
+        <View style={{
+          backgroundColor: 'blue',
+
+
+          height:"100%",width:"100%", padding:0
+          
+          
+          
+
+          }}>
+          <View style={{
+            backgroundColor: 'red', 
+            height:"90%", width:"100%"
+            
+            
+
+            }}>
+            <ScrollView style={{backgroundColor:"yellow", 
+            
+            
+            
+            
+            
+            
+            
+            }}>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+              <Text>Hi!</Text>
+
+
+            </ScrollView>
           </View>
-          <View style={{backgroundColor: 'magenta', padding: 20}}>
+          <View style={{backgroundColor: 'magenta', height:"10%", width:"100%", padding:0, margin:0}}>
             <Text>Wassup</Text>
           </View>
         </View>
