@@ -58,12 +58,32 @@ export default function ProductsList() {
 
           </View>
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
-            <TouchableRipple onPress={() => {}}rippleColor="red" style={{width:"50%", height:"100%"}}>
-              <Text>Press anywhere</Text>
-            </TouchableRipple>
-            <TouchableRipple onPress={() => {}}rippleColor="red" style={{width:"50%", height:"100%"}} >
-              <Text>Press anywhere</Text>
-            </TouchableRipple>
+            
+            <View style={{width:"50%", height:"100%", padding:5}}>
+              <TouchableRipple onPress={() => {}} rippleColor="red" 
+              style={{width:"100%", height:"100%",borderRadius:10,}}
+              borderless={true}>
+                <Text 
+                  style={{alignSelf:"center", marginTop:"auto", marginBottom:"auto"}}>
+                    Previous
+                </Text>
+              </TouchableRipple>
+            </View>
+            
+            
+            
+            <View style={{width:"50%", height:"100%", padding:5}}>
+              <TouchableRipple onPress={() => {}} rippleColor="red" 
+              style={{width:"100%", height:"100%",borderRadius:10,}}
+              borderless={true}>
+                <Text 
+                  style={{alignSelf:"center", marginTop:"auto", marginBottom:"auto"}}>
+                    Next
+                </Text>
+              </TouchableRipple>
+            </View>
+
+
           </View>
         </View>
       </SafeAreaView>
