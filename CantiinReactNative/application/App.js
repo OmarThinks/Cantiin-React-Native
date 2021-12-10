@@ -9,18 +9,23 @@ import React from 'react';
 import ProductsList from './intents/ProductsListIntent';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DefaultTheme, Provider as PaperProvider, DarkTheme } from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
+
+const theme = { ...DefaultTheme };
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProductsList">
-        <Stack.Screen 
-          name="ProductsList" component={ProductsList} 
-          options={{ title: 'Products List' }}/>
-      </Stack.Navigator>
+      <PaperProvider theme={theme}>
+        <Stack.Navigator initialRouteName="ProductsList">
+          <Stack.Screen 
+            name="ProductsList" component={ProductsList} 
+            options={{ title: 'Products List' }}/>
+        </Stack.Navigator>
+      </PaperProvider>
     </NavigationContainer>
   );
 };

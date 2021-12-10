@@ -6,7 +6,6 @@ const  mainFootBar = {height:"10%", width:"100%"};
 const  mainContent = {height:"90%", width:"100%"};
 
 
-
 const styles = StyleSheet.create({
     mainContainer, mainFootBar, mainContent,
   });

@@ -4,16 +4,20 @@ import styles from '../styles';
 
 const axios = require('axios');
 
+
+
+
 export default function ProductsList() {
   
   const [currentPage,setCurrentPage]= useState(1);
+  const [data,setData]= useState([]);
   
   
   
-  axios.get('https://www.cantiin.com/api/products/').then(function (response) {
+  /*axios.get('https://www.cantiin.com/api/products/').then(function (response) {
         const data = response.data;
         console.log(data);
-      });
+  });*/
   
   
    return (
