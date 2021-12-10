@@ -27,7 +27,6 @@ const FooterButton = ( props ) =>{
 
   let style = inputs.disabled? styles.footerButtonDisabled: styles.footerButton;
 
-  console.log(inputs);
   return(
 
   <View style={{...styles.footerButtonView}}>
@@ -58,21 +57,32 @@ export default function ProductsList() {
   
   const [currentPage,setCurrentPage]= useState(1);
   const [response,setResponse]= useState([]);
-  
+  let loaded=false;
   useEffect(()=>{
-    //axios.get('https://www.cantiin.com/api/products/').then(function (response) {
-    //setResponse(response.data); })   
+    loaded=false;
+    axios.get('https://www.cantiin.com/api/products/')
+    .then(function (response) {loaded=true;setResponse(response.data); })   
   }, [currentPage]);
+
+  let nextDisabled=false, prevDisabled=false;
+
 
   
   let loading = (()=>{
-    if (response.length==0) {
+    if (response.length==0) {//We are still loading
+      nextDisabled=true; prevDisabled=true;
       return <ActivityIndicator animating={loading} color={Colors.red800} />;
     }
-    return <Fragment/>
+    else{// We are done loading
+      nextDisabled = (response.next==null)?true:false;
+      prevDisabled = (response.previous==null)?true:false;
+      return <Fragment/>}
   })();
-  console.log(loading);  
-  
+
+  console.log(nextDisabled, prevDisabled);
+
+
+
   console.log("response",response);
 
    return (
@@ -91,8 +101,9 @@ export default function ProductsList() {
             </SafeAreaView> 
           </View>
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
-            <FooterButton text="Previous" onPress={()=>{console.log("I am groot");}}/>
-            <FooterButton text="Next" disabled={false}/>
+            <FooterButton disabled={prevDisabled} text="Previous"
+              onPress={()=>{console.log(loaded)}} />
+            <FooterButton disabled={nextDisabled} text="Next" />
           </View>
         </View>
       </SafeAreaView>
