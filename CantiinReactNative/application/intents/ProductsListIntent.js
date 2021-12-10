@@ -19,15 +19,23 @@ const renderItem = ({ item }) => (
 
 
 
-const FooterButton = (props) =>{
+const FooterButton = ( props ) =>{
+  const inputs = {};
+  inputs.text = props.text!= undefined? props.text : "";
+  inputs.onPress = props.onPress!= undefined? props.onPress : ()=>{};
+  inputs.disabled = props.disabled!= undefined? props.disabled : true;
+
+  console.log(inputs);
   return(
+
   <View style={{...styles.footerButtonView}}>
-    <TouchableRipple onPress={() => {
-      if (props.onPress) {props.onPress();}}} rippleColor="red" 
-    style={{...styles.footerButton}}
-    borderless={true}>
+    <TouchableRipple 
+      onPress={() => {console.log(inputs);}} 
+      rippleColor="red" 
+      style={{...styles.footerButton}}
+      borderless={true}>
       <Text style={{...styles.footerButtonText}}>
-          {props.text}
+          {inputs.text}
       </Text>
     </TouchableRipple>
 </View>)
@@ -84,7 +92,7 @@ export default function ProductsList() {
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
             
           <FooterButton text="Previous" onPress={()=>{console.log("Pressed");}}/>
-          <FooterButton text="Next" />
+          <FooterButton text="Next"/>
 
 
           </View>
