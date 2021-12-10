@@ -1,14 +1,17 @@
 import {SafeAreaView, Text, View, ScrollView, FlatList} from 'react-native';
 import React,{useState, useEffect, useContext, useReducer, Fragment} from 'react';
 import styles from '../styles';
-import { ActivityIndicator, Colors } from 'react-native-paper';
+import { ActivityIndicator, Colors, Divider } from 'react-native-paper';
 
 const axios = require('axios');
 
 
 
 const renderItem = ({ item }) => (
-  <Text >{item.id} </Text>
+  <Fragment>
+    <Text >{item.id} </Text>
+    <Divider style={{...styles.mainDivider}}/>
+  </Fragment>
 );
 
 
