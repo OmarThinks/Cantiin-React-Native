@@ -23,17 +23,21 @@ const FooterButton = ( props ) =>{
   const inputs = {};
   inputs.text = props.text!= undefined? props.text : "";
   inputs.onPress = props.onPress!= undefined? props.onPress : ()=>{};
-  inputs.disabled = props.disabled!= undefined? props.disabled : true;
+  inputs.disabled = props.disabled!= undefined? props.disabled : false;
+
+  let style = inputs.disabled? styles.footerButtonDisabled: styles.footerButton;
 
   console.log(inputs);
   return(
 
   <View style={{...styles.footerButtonView}}>
     <TouchableRipple 
-      onPress={() => {console.log(inputs);}} 
+      onPress={() => { inputs.onPress();}} 
       rippleColor="red" 
-      style={{...styles.footerButton}}
-      borderless={true}>
+      style={{...style}}
+      borderless={true}
+      disabled={inputs.disabled}
+    >
       <Text style={{...styles.footerButtonText}}>
           {inputs.text}
       </Text>
@@ -83,18 +87,12 @@ export default function ProductsList() {
                 keyExtractor={item => item.id}
                 ListHeaderComponent={<Divider style={{...styles.mainDivider}}></Divider>}
                 ListFooterComponent={<Divider style={{...styles.mainDivider}}></Divider>}
-              />  
-            
+              />
             </SafeAreaView> 
-
-
           </View>
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
-            
-          <FooterButton text="Previous" onPress={()=>{console.log("Pressed");}}/>
-          <FooterButton text="Next"/>
-
-
+            <FooterButton text="Previous" onPress={()=>{console.log("I am groot");}}/>
+            <FooterButton text="Next" disabled={false}/>
           </View>
         </View>
       </SafeAreaView>
