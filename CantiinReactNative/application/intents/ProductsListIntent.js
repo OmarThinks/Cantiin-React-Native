@@ -1,7 +1,7 @@
 import {SafeAreaView, Text, View, ScrollView, FlatList} from 'react-native';
 import React,{useState, useEffect, useContext, useReducer, Fragment} from 'react';
 import styles from '../styles';
-import { ActivityIndicator, Colors, Divider, Card, Title, Paragraph, Button } from 'react-native-paper';
+import { ActivityIndicator, Colors, Divider, Card, Title, Paragraph, Button, TouchableRipple } from 'react-native-paper';
 
 const axios = require('axios');
 
@@ -57,12 +57,13 @@ export default function ProductsList() {
 
 
           </View>
-          <View style={{ backgroundColor: 'magenta', ...styles.mainFootBar }}>
-          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-          </Button>
-          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-            Press me
-          </Button>
+          <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
+            <TouchableRipple onPress={() => {}}rippleColor="red" style={{width:"50%", height:"100%"}}>
+              <Text>Press anywhere</Text>
+            </TouchableRipple>
+            <TouchableRipple onPress={() => {}}rippleColor="red" style={{width:"50%", height:"100%"}} >
+              <Text>Press anywhere</Text>
+            </TouchableRipple>
           </View>
         </View>
       </SafeAreaView>
