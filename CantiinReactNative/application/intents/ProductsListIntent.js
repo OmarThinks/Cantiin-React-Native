@@ -7,7 +7,7 @@ export default function ProductsList() {
         const data = response.data;
         console.log(data);
       });
-    return (
+   return (
         <SafeAreaView>
         <View style={{width: '100%', height: '100%', backgroundColor: 'blue'}}>
           <View style={{flexGrow: 1, backgroundColor: 'red', padding: 30}}>
