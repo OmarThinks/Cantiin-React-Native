@@ -19,11 +19,11 @@ const renderItem = ({ item }) => (
 
 
 
-const BottomFooterButton = (props) =>{
+const FooterButton = (props) =>{
   return(
-  <View style={{width:"50%", height:"100%", padding:5}}>
+  <View style={{...styles.footerButtonView}}>
     <TouchableRipple onPress={() => {}} rippleColor="red" 
-    style={{width:"100%", height:"100%",borderRadius:10,}}
+    style={{...styles.footerButton}}
     borderless={true}>
       <Text 
         style={{alignSelf:"center", marginTop:"auto", marginBottom:"auto"}}>
@@ -83,8 +83,8 @@ export default function ProductsList() {
           </View>
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
             
-          <BottomFooterButton text="Previous"/>
-          <BottomFooterButton text="Next"/>
+          <FooterButton text="Previous"/>
+          <FooterButton text="Next"/>
 
 
           </View>
