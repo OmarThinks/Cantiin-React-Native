@@ -10,15 +10,16 @@ const axios = require('axios');
 export default function ProductsList() {
   
   const [currentPage,setCurrentPage]= useState(1);
-  const [data,setData]= useState([]);
+  const [response,setResponse]= useState([]);
+  
+  useEffect(()=>{
+    axios.get('https://www.cantiin.com/api/products/').then(function (response) {
+    setResponse(response.data); })   
+  }, [currentPage]);
+
   
   
-  
-  /*axios.get('https://www.cantiin.com/api/products/').then(function (response) {
-        const data = response.data;
-        console.log(data);
-  });*/
-  
+  console.log(response);
   
    return (
         <SafeAreaView>
