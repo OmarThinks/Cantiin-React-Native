@@ -60,7 +60,7 @@ export default function ProductsList() {
   let loaded=false;
   useEffect(()=>{
     loaded=false;
-    axios.get('https://www.cantiin.com/api/products/')
+    axios.get(`https://cantiin.com/api/products/?page=${currentPage.toString()}`)
     .then(function (response) {loaded=true;setResponse(response.data); })   
   }, [currentPage]);
 
@@ -102,8 +102,9 @@ export default function ProductsList() {
           </View>
           <View style={{ backgroundColor: 'yellow', ...styles.mainFootBar, display:"flex", flexDirection:"row" }}>
             <FooterButton disabled={prevDisabled} text="Previous"
-              onPress={()=>{console.log(loaded)}} />
-            <FooterButton disabled={nextDisabled} text="Next" />
+              onPress={()=>{setCurrentPage(currentPage-1);}} />
+            <FooterButton disabled={nextDisabled} text="Next" 
+            onPress={()=>{setCurrentPage(currentPage+1);}}/>
           </View>
         </View>
       </SafeAreaView>
