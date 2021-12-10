@@ -36,45 +36,6 @@ export default function ProductsList() {
             
             }}>
               <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-              <Text>Hi!</Text>
-
 
             </ScrollView>
           </View>
