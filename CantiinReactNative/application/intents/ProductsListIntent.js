@@ -1,5 +1,6 @@
 import {SafeAreaView, Text, View, ScrollView} from 'react-native';
 import React,{useState, useEffect, useContext, useReducer} from 'react';
+import styles from '../styles';
 
 const axios = require('axios');
 
@@ -17,17 +18,13 @@ export default function ProductsList() {
   
    return (
         <SafeAreaView>
-        <View style={{
-          backgroundColor: 'blue', height:"100%", width:"100%", padding:0}}>
-          <View style={{
-            backgroundColor: 'red', 
-            height:"90%", width:"100%"}}>
+        <View style={{ backgroundColor: 'blue', ...styles.mainContainer }}>
+          <View style={{ backgroundColor: 'red', ...styles.mainContent }}>
             <ScrollView style={{backgroundColor:"yellow",}}>
               <Text>Hi!</Text>
             </ScrollView>
           </View>
-          <View style={{
-              backgroundColor: 'magenta', height:"10%", width:"100%", padding:0,      margin:0}}>
+          <View style={{ backgroundColor: 'magenta', ...styles.mainFootBar }}>
             <Text>Wassup</Text>
           </View>
         </View>
