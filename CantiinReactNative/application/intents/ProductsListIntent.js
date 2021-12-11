@@ -61,7 +61,7 @@ const FooterButton = props => {
 export default function ProductsListIntent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [response, setResponse] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);

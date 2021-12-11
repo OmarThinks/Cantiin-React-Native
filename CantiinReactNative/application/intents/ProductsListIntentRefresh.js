@@ -70,7 +70,7 @@ const FooterButton = props => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesHelper = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -83,19 +83,38 @@ const styles = StyleSheet.create({
 });
 
 export default function ProductsListIntent() {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [response, setResponse] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
-  }, []);
+  const loadPage = () => {
+    setLoading(true);
+    setResponse({});
+    axios
+      .get(`https://cantiin.com/api/products/?page=${currentPage.toString()}`)
+      .then(function (responseOfRequest) {
+        setLoading(false);
+        setResponse(responseOfRequest.data);
+        console.log(responseOfRequest.data);
+      })
+      .catch(() => {
+        console.log('Fetch Failed');
+      });
+  };
+
+  useEffect(() => {
+        loadPage();
+  }, [currentPage]);
+
+
+
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={stylesHelper.container}>
       <ScrollView
-        contentContainerStyle={styles.scrollView}
+        contentContainerStyle={stylesHelper.scrollView}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl refreshing={loading} onRefresh={loadPage} />
         }>
         <Text>Pull down to see RefreshControl indicator</Text>
       </ScrollView>
