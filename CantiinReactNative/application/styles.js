@@ -8,9 +8,16 @@ const mainFootBar = {height:"10%", width:"100%"};
 const mainContent = {height:"90%", width:"100%"};
 const mainDivider = {height:3};
 const footerButtonView = {width:"50%", height:"100%", padding:5};
-const footerButton = {width:"100%", height:"100%",borderRadius:10,};
-const footerButtonText = {alignSelf:"center", marginTop:"auto", marginBottom:"auto"};
+const footerButton = {width:"100%", height:"100%",borderRadius:10, backgroundColor:Colors.blue100};
 const footerButtonDisabled = {...footerButton, backgroundColor:"grey"};
+const footerButtonStyle =(disabled)=>(disabled?{...footerButtonDisabled}:{...footerButton});
+
+
+const footerButtonText = (disbaled) => {
+  let defaultStyle = {alignSelf:"center", marginTop:"auto", marginBottom:"auto"};
+  return disbaled? {...defaultStyle, fontWeight:"100"}:{...defaultStyle,fontWeight:"900"};
+};
+
 const splitter = { width:"100%", display:"flex", flexDirection:"row", justifyContent:"space-between"};
 const itemColor = (available)=>(
   available?{color:Colors.green700}:{color:Colors.red700});
@@ -23,8 +30,8 @@ const cardStyle = (available)=>{
   }};
 
 const styles = StyleSheet.create({
-    mainContainer, mainFootBar, mainContent, mainDivider, footerButtonView, footerButton,
-    footerButtonText, footerButtonDisabled, splitter, itemColor, itemBackgroundColor,cardStyle
+    mainContainer, mainFootBar, mainContent, mainDivider, footerButtonView, footerButtonStyle,
+    footerButtonText, splitter, itemColor, itemBackgroundColor,cardStyle
   });
 
 export default styles;

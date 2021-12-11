@@ -26,10 +26,6 @@ const renderItem = ({ item }) => {
   </Fragment>)
 };
 
-/*
-      <Divider style={{...styles.mainDivider}}/>
-
-*/
 
 const FooterButton = ( props ) =>{
   const inputs = {};
@@ -37,19 +33,18 @@ const FooterButton = ( props ) =>{
   inputs.onPress = props.onPress!= undefined? props.onPress : ()=>{};
   inputs.disabled = props.disabled!= undefined? props.disabled : false;
 
-  let style = inputs.disabled? styles.footerButtonDisabled: styles.footerButton;
 
   return(
 
-  <View style={{...styles.footerButtonView}}>
+  <View style={{...styles.footerButtonView, backgroundColor:Colors.blueA100}}>
     <TouchableRipple 
       onPress={() => { inputs.onPress();}} 
-      rippleColor="red" 
-      style={{...style}}
+      rippleColor="blue" 
+      style={{...styles.footerButtonStyle(inputs.disabled)}}
       borderless={true}
       disabled={inputs.disabled}
     >
-      <Text style={{...styles.footerButtonText}}>
+      <Text style={{...styles.footerButtonText(inputs.disabled)}}>
           {inputs.text}
       </Text>
     </TouchableRipple>
@@ -113,8 +108,6 @@ export default function ProductsList() {
                 data={response.results}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-                ListHeaderComponent={<Divider style={{...styles.mainDivider}}></Divider>}
-                ListFooterComponent={<Divider style={{...styles.mainDivider}}></Divider>}
               />
             </SafeAreaView> 
           </View>
@@ -122,7 +115,7 @@ export default function ProductsList() {
             <FooterButton disabled={prevDisabled} text="Previous"
               onPress={()=>{setCurrentPage(currentPage-1);}} />
             <FooterButton disabled={nextDisabled} text="Next" 
-            onPress={()=>{setCurrentPage(currentPage+1);}}/>
+              onPress={()=>{setCurrentPage(currentPage+1);}}/>
           </View>
         </View>
       </SafeAreaView>
