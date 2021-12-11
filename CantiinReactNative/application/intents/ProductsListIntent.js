@@ -60,7 +60,7 @@ const FooterButton = props => {
   );
 };
 
-export default function ProductsList() {
+export default function ProductsListIntent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(true);
