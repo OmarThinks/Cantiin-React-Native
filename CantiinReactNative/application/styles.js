@@ -15,7 +15,7 @@ const footerButton = {
   width: '100%',
   height: '100%',
   borderRadius: 10,
-  backgroundColor: Colors.green200,
+  backgroundColor: Colors.green400,
   borderWidth: 1.5,
 };
 const footerButtonDisabled = {

@@ -14,6 +14,7 @@ import {
   Provider as PaperProvider,
   DarkTheme,
 } from 'react-native-paper';
+import {Colors} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,16 @@ const App = () => {
           <Stack.Screen
             name="ProductsList"
             component={ProductsListIntent}
-            options={{title: 'Products List'}}
+            options={{
+              title: 'Products List',
+              headerStyle: {
+                backgroundColor: Colors.black,
+              },
+              headerTintColor: Colors.white,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
           />
         </Stack.Navigator>
       </PaperProvider>
