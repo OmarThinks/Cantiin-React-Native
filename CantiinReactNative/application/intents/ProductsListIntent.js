@@ -11,8 +11,14 @@ const renderItem = ({ item }) => (
   <Fragment>
     <Card>
       <Title>{item.name}</Title>
+      
+      <View style={{ width:"100%", display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
       <Paragraph>${item.price}</Paragraph>
+      <Paragraph>{item.in_stock?"In-Stock":"Out of Stock"}</Paragraph>
+      </View>
+
       <Divider style={{...styles.mainDivider}}/>
+
     </Card>
   </Fragment>
 );
