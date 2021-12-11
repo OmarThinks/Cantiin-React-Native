@@ -7,23 +7,29 @@ const axios = require('axios');
 
 
 
-const renderItem = ({ item }) => (
-  <Fragment>
-    <Card>
+const renderItem = ({ item }) => {
+  const availabilityColorStyle = {...styles.itemColor(item.in_stock), fontWeight:"bold"};
+  const cardStyle = {margin:3, paddingHorizontal:5, borderStyle:"solid", borderWidth:2, ...styles.itemBackgroundColor(item.in_stock)};
+  return (<Fragment>
+    <Card style={cardStyle}>
       <Title>{item.name}</Title>
       
-      <View style={{ width:"100%", display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+      <View style={{...styles.splitter}}>
       <Paragraph>${item.price}</Paragraph>
-      <Paragraph>{item.in_stock?"In-Stock":"Out of Stock"}</Paragraph>
+      <Paragraph style={availabilityColorStyle}>
+        {item.in_stock?"In-Stock":"Out of Stock"}
+      </Paragraph>
       </View>
 
-      <Divider style={{...styles.mainDivider}}/>
 
     </Card>
-  </Fragment>
-);
+  </Fragment>)
+};
 
+/*
+      <Divider style={{...styles.mainDivider}}/>
 
+*/
 
 const FooterButton = ( props ) =>{
   const inputs = {};
@@ -99,7 +105,7 @@ export default function ProductsList() {
 
    return (
         <SafeAreaView>
-        <View style={{ backgroundColor: 'blue', ...styles.mainContainer }}>
+        <View style={{ ...styles.mainContainer }}>
           <View style={{ ...styles.mainContent }}>
             {loadingComponent}
             <SafeAreaView style={{flex: 1}}>
