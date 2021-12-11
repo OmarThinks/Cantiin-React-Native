@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import {Colors} from 'react-native-paper';
+
+
 const mainContainer = { height:"100%", width:"100%"};
 const mainFootBar = {height:"10%", width:"100%"};
 const mainContent = {height:"90%", width:"100%"};
@@ -14,11 +16,15 @@ const itemColor = (available)=>(
   available?{color:Colors.green700}:{color:Colors.red700});
 const itemBackgroundColor = (available)=>(
   available?{backgroundColor:Colors.green100}:{backgroundColor:Colors.red100});
-
+const cardStyle = (available)=>{
+  return {
+    margin:3, paddingHorizontal:5, borderStyle:"solid", 
+    borderWidth:2, ...itemBackgroundColor(available)
+  }};
 
 const styles = StyleSheet.create({
     mainContainer, mainFootBar, mainContent, mainDivider, footerButtonView, footerButton,
-    footerButtonText, footerButtonDisabled, splitter, itemColor, itemBackgroundColor,
+    footerButtonText, footerButtonDisabled, splitter, itemColor, itemBackgroundColor,cardStyle
   });
 
 export default styles;

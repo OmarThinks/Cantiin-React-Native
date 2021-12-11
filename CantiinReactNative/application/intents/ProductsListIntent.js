@@ -9,7 +9,7 @@ const axios = require('axios');
 
 const renderItem = ({ item }) => {
   const availabilityColorStyle = {...styles.itemColor(item.in_stock), fontWeight:"bold"};
-  const cardStyle = {margin:3, paddingHorizontal:5, borderStyle:"solid", borderWidth:2, ...styles.itemBackgroundColor(item.in_stock)};
+  const cardStyle = {...styles.cardStyle(item.in_stock)};
   return (<Fragment>
     <Card style={cardStyle}>
       <Title>{item.name}</Title>
