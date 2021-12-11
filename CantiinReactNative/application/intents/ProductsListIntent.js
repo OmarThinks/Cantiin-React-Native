@@ -57,27 +57,33 @@ export default function ProductsList() {
   
   const [currentPage,setCurrentPage]= useState(1);
   const [response,setResponse]= useState([]);
-  let loaded=false;
+  const [loading,setLoading]= useState(true);
+
   useEffect(()=>{
-    loaded=false;
+    setLoading(true); setResponse({});
     axios.get(`https://cantiin.com/api/products/?page=${currentPage.toString()}`)
-    .then(function (response) {loaded=true;setResponse(response.data); })   
+    .then(function (response) {setLoading(false);setResponse(response.data); })
+    .catch(()=>{console.log("Fetch Failed");})
   }, [currentPage]);
+
+  console.log("loading", loading);
 
   let nextDisabled=false, prevDisabled=false;
 
-
   
-  let loading = (()=>{
-    if (response.length==0) {//We are still loading
+  let loadingComponent=(()=>{
+    if (loading) {
       nextDisabled=true; prevDisabled=true;
-      return <ActivityIndicator animating={loading} color={Colors.red800} />;
+      return <ActivityIndicator animating={true} color={Colors.red800} />;
     }
-    else{// We are done loading
+    else{
       nextDisabled = (response.next==null)?true:false;
       prevDisabled = (response.previous==null)?true:false;
       return <Fragment/>}
   })();
+
+  
+
 
   console.log(nextDisabled, prevDisabled);
 
@@ -89,7 +95,7 @@ export default function ProductsList() {
         <SafeAreaView>
         <View style={{ backgroundColor: 'blue', ...styles.mainContainer }}>
           <View style={{ ...styles.mainContent }}>
-            {loading}
+            {loadingComponent}
             <SafeAreaView style={{flex: 1}}>
               <FlatList
                 data={response.results}
