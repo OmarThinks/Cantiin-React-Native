@@ -42,13 +42,11 @@ const FooterButton = props => {
   inputs.disabled = props.disabled !== undefined ? props.disabled : false;
 
   return (
-    <View
-      style={{...styles.footerButtonView, backgroundColor: Colors.blueA100}}>
+    <View style={{...styles.footerButtonView}}>
       <TouchableRipple
         onPress={() => {
           inputs.onPress();
         }}
-        rippleColor="blue"
         style={{...styles.footerButtonStyle(inputs.disabled)}}
         borderless={true}
         disabled={inputs.disabled}>
@@ -115,7 +113,6 @@ export default function ProductsListIntent() {
         </View>
         <View
           style={{
-            backgroundColor: 'yellow',
             ...styles.mainFootBar,
             display: 'flex',
             flexDirection: 'row',
