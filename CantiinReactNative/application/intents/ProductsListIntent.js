@@ -53,7 +53,7 @@ const FooterButton = props => {
         borderless={true}
         disabled={inputs.disabled}>
         <Text style={{...styles.footerButtonText(inputs.disabled)}}>
-          {inputs.text}
+          {inputs.disabled ? '' : inputs.text}
         </Text>
       </TouchableRipple>
     </View>
