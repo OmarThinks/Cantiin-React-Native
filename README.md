@@ -32,5 +32,17 @@ To control the application in the emulator, **`ctrl + m`**
 
 
 
-# B) ScreenShots:
+# B) How it works:
 
+1. It communicates with a RESTful API at https://www.cantiin.com/api/products/, and it paginates through the list of products.
+
+<img src="pictures/screenshot1.png" width=270 height=480 />
+<img src="pictures/screenshot2.png" width=270 height=480 />
+<img src="pictures/screenshot3.png" width=270 height=480 />
+
+
+2. If something went wrong while sending the request (For example: No internet connection), It will show a messgae, and you can always refresh the page
+
+
+<img src="pictures/screenshot4.png" width=270 height=480 />
+<img src="pictures/screenshot5.png" width=270 height=480 />
