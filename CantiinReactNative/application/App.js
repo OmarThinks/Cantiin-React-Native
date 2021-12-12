@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 import React from 'react';
-import ProductsListIntent from './intents/ProductsListIntentRefresh';
+import ProductsListIntent from './intents/ProductsListIntent';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
