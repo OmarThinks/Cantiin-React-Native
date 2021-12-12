@@ -1,13 +1,5 @@
-import {
-  SafeAreaView,
-  Text,
-  View,
-  FlatList,
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
-import {useState, useEffect, useContext, useReducer, Fragment} from 'react';
+import {SafeAreaView, Text, View, FlatList, StyleSheet} from 'react-native';
+import {useState, useEffect, Fragment} from 'react';
 import React from 'react';
 import styles from '../styles';
 import {
@@ -86,19 +78,20 @@ export default function ProductsListIntent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [rendered, setRendered] = useState(<Fragment />);
 
   const loadPage = () => {
     setLoading(true);
-    setResponse({});
+    //setResponse({});
     axios
       .get(`https://cantiin.com/api/products/?page=${currentPage.toString()}`)
       .then(function (responseOfRequest) {
         setLoading(false);
         setResponse(responseOfRequest.data);
-        console.log(responseOfRequest.data);
+        //console.log(responseOfRequest.data);
       })
       .catch(() => {
-        console.log('Fetch Failed');
+        //console.log('Fetch Failed');
       });
   };
 
@@ -106,7 +99,7 @@ export default function ProductsListIntent() {
     loadPage();
   }, [currentPage]);
 
-  console.log('loading', loading);
+  //console.log('loading', loading);
 
   let nextDisabled = false,
     prevDisabled = false;
@@ -123,46 +116,49 @@ export default function ProductsListIntent() {
     }
   })();
 
-  console.log(nextDisabled, prevDisabled);
+  //console.log(nextDisabled, prevDisabled);
 
-  console.log('response', response);
+  //console.log('response', response);
 
   return (
-    <SafeAreaView>
-      <View style={{...styles.mainContainer}}>
-        <View style={{...styles.mainContent}}>
-          <SafeAreaView style={{flex: 1}}>
-            <FlatList
-              data={response.results}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-              onRefresh={loadPage}
-              refreshing={loading}
+    <Fragment>
+      {rendered}
+      <SafeAreaView>
+        <View style={{...styles.mainContainer}}>
+          <View style={{...styles.mainContent}}>
+            <SafeAreaView style={{flex: 1}}>
+              <FlatList
+                data={response.results}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+                onRefresh={loadPage}
+                refreshing={loading}
+              />
+            </SafeAreaView>
+          </View>
+          <View
+            style={{
+              ...styles.mainFootBar,
+              display: 'flex',
+              flexDirection: 'row',
+            }}>
+            <FooterButton
+              disabled={prevDisabled}
+              text="Previous"
+              onPress={() => {
+                setCurrentPage(currentPage - 1);
+              }}
             />
-          </SafeAreaView>
+            <FooterButton
+              disabled={nextDisabled}
+              text="Next"
+              onPress={() => {
+                setCurrentPage(currentPage + 1);
+              }}
+            />
+          </View>
         </View>
-        <View
-          style={{
-            ...styles.mainFootBar,
-            display: 'flex',
-            flexDirection: 'row',
-          }}>
-          <FooterButton
-            disabled={prevDisabled}
-            text="Previous"
-            onPress={() => {
-              setCurrentPage(currentPage - 1);
-            }}
-          />
-          <FooterButton
-            disabled={nextDisabled}
-            text="Next"
-            onPress={() => {
-              setCurrentPage(currentPage + 1);
-            }}
-          />
-        </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </Fragment>
   );
 }
