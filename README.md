@@ -2,6 +2,9 @@
 Creating an android application for cantiin
 
 
+**Watch video on Youtube: https://www.youtube.com/watch?v=xxdOiVmBEP8**
+
+
 # A) How to run:
 ## A-1) Preparing react native:
 
