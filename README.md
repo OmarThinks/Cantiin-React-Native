@@ -28,3 +28,9 @@ npx react-native run-android
 
 Run the application with React-Native Debugger.  
 To control the application in the emulator, **`ctrl + m`**
+
+
+
+
+# B) ScreenShots:
+

@@ -87,7 +87,7 @@ export default function ProductsListIntent() {
     axios({
       method: 'get',
       url: `https://cantiin.com/api/products/?page=${currentPage.toString()}`,
-      timeout: 1000 * 2, // Wait for 5 seconds
+      timeout: 5000 * 2, // Wait for 5 seconds
     })
       .then(function (responseOfRequest) {
         setLoading(false);
