@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useState, useEffect, useContext, useReducer, Fragment} from 'react';
 import React from 'react';
-///import styles from '../styles';
+import styles from '../styles';
 import {
   ActivityIndicator,
   Colors,
@@ -103,21 +103,66 @@ export default function ProductsListIntent() {
   };
 
   useEffect(() => {
-        loadPage();
+    loadPage();
   }, [currentPage]);
 
+  console.log('loading', loading);
 
+  let nextDisabled = false,
+    prevDisabled = false;
 
+  let loadingComponent = (() => {
+    if (loading) {
+      nextDisabled = true;
+      prevDisabled = true;
+      return <ActivityIndicator animating={true} color={Colors.red800} />;
+    } else {
+      nextDisabled = response.next == null ? true : false;
+      prevDisabled = response.previous == null ? true : false;
+      return <Fragment />;
+    }
+  })();
+
+  console.log(nextDisabled, prevDisabled);
+
+  console.log('response', response);
 
   return (
-    <SafeAreaView style={stylesHelper.container}>
-      <ScrollView
-        contentContainerStyle={stylesHelper.scrollView}
-        refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={loadPage} />
-        }>
-        <Text>Pull down to see RefreshControl indicator</Text>
-      </ScrollView>
+    <SafeAreaView>
+      <View style={{...styles.mainContainer}}>
+        <View style={{...styles.mainContent}}>
+          <SafeAreaView style={{flex: 1}}>
+            <FlatList
+              data={response.results}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+              onRefresh={loadPage}
+              refreshing={loading}
+            />
+          </SafeAreaView>
+        </View>
+        <View
+          style={{
+            ...styles.mainFootBar,
+            display: 'flex',
+            flexDirection: 'row',
+          }}>
+          <FooterButton
+            disabled={prevDisabled}
+            text="Previous"
+            onPress={() => {
+              setCurrentPage(currentPage - 1);
+            }}
+          />
+          <FooterButton
+            disabled={nextDisabled}
+            text="Next"
+            onPress={() => {
+              setCurrentPage(currentPage + 1);
+            }}
+          />
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
