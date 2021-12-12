@@ -9,6 +9,7 @@ import {
   Title,
   Paragraph,
   TouchableRipple,
+  Button,
 } from 'react-native-paper';
 
 const axios = require('axios');
@@ -78,20 +79,26 @@ export default function ProductsListIntent() {
   const [currentPage, setCurrentPage] = useState(1);
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [rendered, setRendered] = useState(<Fragment />);
+  const [requestError, setRequestError] = useState(false);
 
   const loadPage = () => {
     setLoading(true);
     //setResponse({});
-    axios
-      .get(`https://cantiin.com/api/products/?page=${currentPage.toString()}`)
+    axios({
+      method: 'get',
+      url: `https://cantiin.com/api/products/?page=${currentPage.toString()}`,
+      timeout: 1000 * 2, // Wait for 5 seconds
+    })
       .then(function (responseOfRequest) {
         setLoading(false);
+        setRequestError(false);
         setResponse(responseOfRequest.data);
         //console.log(responseOfRequest.data);
       })
       .catch(() => {
-        //console.log('Fetch Failed');
+        console.log('Fetch Failed');
+        setRequestError(true);
+        setLoading(false);
       });
   };
 
@@ -99,7 +106,7 @@ export default function ProductsListIntent() {
     loadPage();
   }, [currentPage]);
 
-  //console.log('loading', loading);
+  console.log('loading', loading);
 
   let nextDisabled = false,
     prevDisabled = false;
@@ -120,45 +127,69 @@ export default function ProductsListIntent() {
 
   //console.log('response', response);
 
-  return (
-    <Fragment>
-      {rendered}
+  if (requestError) {
+    return (
       <SafeAreaView>
-        <View style={{...styles.mainContainer}}>
-          <View style={{...styles.mainContent}}>
-            <SafeAreaView style={{flex: 1}}>
-              <FlatList
-                data={response.results}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                onRefresh={loadPage}
-                refreshing={loading}
-              />
-            </SafeAreaView>
-          </View>
-          <View
-            style={{
-              ...styles.mainFootBar,
-              display: 'flex',
-              flexDirection: 'row',
-            }}>
-            <FooterButton
-              disabled={prevDisabled}
-              text="Previous"
-              onPress={() => {
-                setCurrentPage(currentPage - 1);
-              }}
-            />
-            <FooterButton
-              disabled={nextDisabled}
-              text="Next"
-              onPress={() => {
-                setCurrentPage(currentPage + 1);
-              }}
-            />
-          </View>
-        </View>
+        <Title style={{padding: 20}}>
+          Something went wrong, try again later!
+        </Title>
+        <Button
+          onPress={() => {
+            setLoading(true);
+            loadPage();
+          }}
+          style={{
+            backgroundColor: Colors.green300,
+            width: '50%',
+            alignSelf: 'center',
+            padding: 10,
+            fontSize: 30,
+          }}
+          labelStyle={{fontSize: 20}}
+          disabled={loading}
+          loading={loading}>
+          Refresh
+        </Button>
       </SafeAreaView>
-    </Fragment>
+    );
+  }
+
+  return (
+    <SafeAreaView>
+      <View style={{...styles.mainContainer}}>
+        <View style={{...styles.mainContent}}>
+          <SafeAreaView style={{flex: 1}}>
+            <FlatList
+              data={response.results}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+              onRefresh={loadPage}
+              refreshing={loading}
+            />
+          </SafeAreaView>
+        </View>
+        <View
+          style={{
+            ...styles.mainFootBar,
+            display: 'flex',
+            flexDirection: 'row',
+          }}>
+          <FooterButton
+            disabled={prevDisabled}
+            text="Previous"
+            onPress={() => {
+              setCurrentPage(currentPage - 1);
+            }}
+          />
+          <FooterButton
+            disabled={nextDisabled}
+            text="Next"
+            onPress={() => {
+              setCurrentPage(currentPage + 1);
+            }}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
