@@ -113,8 +113,8 @@ export default function ProductsListIntent() {
 
   let loadingComponent = (() => {
     if (loading) {
-      nextDisabled = true;
-      prevDisabled = true;
+      //nextDisabled = true;
+      //prevDisabled = true;
       return <ActivityIndicator animating={true} color={Colors.red800} />;
     } else {
       nextDisabled = response.next == null ? true : false;
@@ -178,14 +178,18 @@ export default function ProductsListIntent() {
             disabled={prevDisabled}
             text="Previous"
             onPress={() => {
-              setCurrentPage(currentPage - 1);
+              if (!loading) {
+                setCurrentPage(currentPage - 1);
+              }
             }}
           />
           <FooterButton
             disabled={nextDisabled}
             text="Next"
             onPress={() => {
-              setCurrentPage(currentPage + 1);
+              if (!loading) {
+                setCurrentPage(currentPage + 1);
+              }
             }}
           />
         </View>
