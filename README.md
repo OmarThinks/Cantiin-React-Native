@@ -2,7 +2,7 @@
 Creating an android application for cantiin
 
 
-**Watch video on Youtube: https://www.youtube.com/watch?v=xxdOiVmBEP8**
+**Watch video on Youtube: https://www.youtube.com/watch?v=4nlIVCSuJrw**
 
 
 # A) How to run:
