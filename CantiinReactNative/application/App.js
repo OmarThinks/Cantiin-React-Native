@@ -14,6 +14,7 @@ import {
   Provider as PaperProvider,
   DarkTheme,
 } from 'react-native-paper';
+import { Avatar } from 'react-native-paper';
 
 
 import {
@@ -25,7 +26,9 @@ import {
   Button,
 } from 'react-native-paper';
 
+import {View} from 'react-native';
 import {Colors} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,11 +53,16 @@ const App = () => {
               },
               headerRight: () => {
                 return (
-                  <Fragment>
-                    <Title style={{color: 'white'}}>Hi</Title>
-                    <Title style={{color: 'white'}}>Hi</Title>
-                    <Button icon={'account'} style={{height:"100%"}}/>
-                  </Fragment>
+                  <View
+                    onPress={() => {
+                      console.log('User');
+                    }}>
+                    <IconButton size={20} icon="account" style={{backgroundColor:"white"}} 
+                    onPress={() => {
+                      console.log('User');
+                      }}
+                    />
+                  </View>
                 );
               },
             }}
