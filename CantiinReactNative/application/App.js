@@ -5,8 +5,10 @@
  * @format
  * @flow strict-local
  */
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import ProductsListIntent from './intents/ProductsListIntent';
+import UserIntent from './intents/UserIntent';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
@@ -14,8 +16,7 @@ import {
   Provider as PaperProvider,
   DarkTheme,
 } from 'react-native-paper';
-import { Avatar } from 'react-native-paper';
-
+import {Avatar} from 'react-native-paper';
 
 import {
   ActivityIndicator,
@@ -51,15 +52,17 @@ const App = () => {
               headerTitleStyle: {
                 fontWeight: 'bold',
               },
-              headerRight: () => {
+              headerShown: false,
+              headerRight: ({}) => {
                 return (
-                  <View
-                    onPress={() => {
-                      console.log('User');
-                    }}>
-                    <IconButton size={20} icon="account" style={{backgroundColor:"white"}} 
-                    onPress={() => {
-                      console.log('User');
+                  <View>
+                    <IconButton
+                      size={20}
+                      icon="account"
+                      style={{backgroundColor: 'white'}}
+                      onPress={() => {
+                        //console.log('User');
+                        //navigation.navigate('UserIntent');
                       }}
                     />
                   </View>
@@ -68,8 +71,6 @@ const App = () => {
             }}
           />
 
-
-          
         </Stack.Navigator>
       </PaperProvider>
     </NavigationContainer>
