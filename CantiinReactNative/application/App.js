@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-import React from 'react';
+import React, { Fragment } from 'react';
 import ProductsListIntent from './intents/ProductsListIntent';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,6 +14,17 @@ import {
   Provider as PaperProvider,
   DarkTheme,
 } from 'react-native-paper';
+
+
+import {
+  ActivityIndicator,
+  Card,
+  Title,
+  Paragraph,
+  TouchableRipple,
+  Button,
+} from 'react-native-paper';
+
 import {Colors} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +47,13 @@ const App = () => {
               headerTintColor: Colors.white,
               headerTitleStyle: {
                 fontWeight: 'bold',
+              },
+              headerRight: () => {
+                return (
+                  <Fragment>
+                    <Title style={{color: 'white'}}>Hi</Title>
+                  </Fragment>
+                );
               },
             }}
           />
