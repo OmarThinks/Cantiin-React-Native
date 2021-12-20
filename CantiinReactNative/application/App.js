@@ -67,6 +67,9 @@ const App = () => {
               },
             }}
           />
+
+
+          
         </Stack.Navigator>
       </PaperProvider>
     </NavigationContainer>
