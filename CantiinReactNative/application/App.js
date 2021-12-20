@@ -52,6 +52,8 @@ const App = () => {
                 return (
                   <Fragment>
                     <Title style={{color: 'white'}}>Hi</Title>
+                    <Title style={{color: 'white'}}>Hi</Title>
+                    <Button icon={'account'} style={{height:"100%"}}/>
                   </Fragment>
                 );
               },
