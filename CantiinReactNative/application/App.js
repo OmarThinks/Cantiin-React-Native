@@ -34,83 +34,18 @@ import {getHeaderTitle} from '@react-navigation/elements';
 
 import {Appbar} from 'react-native-paper';
 
+import CustomHeader from './Components/CustomHeader';
+
+
 const Stack = createNativeStackNavigator();
 
 const theme = {...DefaultTheme};
 
-/*
-const App = () => {
-  const MORE_ICON = 'dots-horizontal';
-  const MyComponent = () => (
-    <Appbar.Header>
-      <Appbar.Content title="Title" subtitle={'Subtitle'} />
-      <Appbar.Action icon="magnify" onPress={() => {}} />
-      <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
-    </Appbar.Header>
-  );
-  return (
-    <NavigationContainer>
-      <PaperProvider theme={theme}>
-        <Stack.Navigator initialRouteName="ProductsList">
-          <Stack.Screen
-            name="ProductsList"
-            component={ProductsListIntent}
-            options={{
-              title: 'Products List',
-              headerStyle: {
-                backgroundColor: Colors.black,
-              },
-              headerTintColor: Colors.white,
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-              //headerShown: false,
-              headerRight: () => {
-                return (
-                  <View>
-                    <IconButton
-                      size={20}
-                      icon="account"
-                      style={{backgroundColor: 'white'}}
-                      onPress={() => {
-                        //console.log("Navigation", navigation);
-                        //navigation.navigate('UserIntent');
-                      }}
-                    />
-                  </View>
-                );
-              },
-            }}
-          />
-        </Stack.Navigator>
-      </PaperProvider>
-    </NavigationContainer>
-  );
-};
 
 
-
-*/
 
 const App = () => {
   const MORE_ICON = 'dots-horizontal';
-  const MyComponent = props => {
-    const title = props.title;
-    const subtitle = props.subtitle ? props.subtitle : undefined;
-    const navigation = props.navigation ? props.navigation : undefined;
-    return (
-      <Appbar.Header style={{backgroundColor:Colors.black}}>
-        <Appbar.Content title={props.title} subtitle={subtitle} />
-        <Appbar.Action
-          icon="account"
-          onPress={() => {
-            console.log(navigation);
-            navigation.navigate('ProductsList1');
-          }}
-        />
-      </Appbar.Header>
-    );
-  };
   return (
     <NavigationContainer>
       <PaperProvider theme={theme}>
@@ -125,7 +60,7 @@ const App = () => {
                 const title = getHeaderTitle(options, route.name);
 
                 return (
-                  <MyComponent
+                  <CustomHeader
                     title={title}
                     navigation={navigation}
                     leftButton={
@@ -167,7 +102,7 @@ const App = () => {
                 const title = getHeaderTitle(options, route.name);
 
                 return (
-                  <MyComponent
+                  <CustomHeader
                     title={title}
                     navigation={navigation}
                     style={options.headerStyle}
