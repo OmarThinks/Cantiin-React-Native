@@ -102,12 +102,11 @@ const App = () => {
       <Appbar.Header>
         <Appbar.Content title={props.title} subtitle={subtitle} />
         <Appbar.Action
-          icon="magnify"
+          icon="account"
           onPress={() => {
             console.log(navigation);
           }}
         />
-        <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
       </Appbar.Header>
     );
   };
