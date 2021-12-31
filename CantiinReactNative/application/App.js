@@ -94,13 +94,23 @@ const App = () => {
 
 const App = () => {
   const MORE_ICON = 'dots-horizontal';
-  const MyComponent = () => (
-    <Appbar.Header>
-      <Appbar.Content title="Title" subtitle={'Subtitle'} />
-      <Appbar.Action icon="magnify" onPress={() => {}} />
-      <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
-    </Appbar.Header>
-  );
+  const MyComponent = props => {
+    const title = props.title;
+    const subtitle = props.subtitle ? props.subtitle : undefined;
+    const navigation = props.navigation ? props.navigation : undefined;
+    return (
+      <Appbar.Header>
+        <Appbar.Content title={props.title} subtitle={subtitle} />
+        <Appbar.Action
+          icon="magnify"
+          onPress={() => {
+            console.log(navigation);
+          }}
+        />
+        <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
+      </Appbar.Header>
+    );
+  };
   return (
     <NavigationContainer>
       <PaperProvider theme={theme}>
@@ -110,19 +120,14 @@ const App = () => {
             component={ProductsListIntent}
             options={{
               title: 'Products List',
-              headerStyle: {
-                backgroundColor: Colors.black,
-              },
-              headerTintColor: Colors.white,
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
+
               header: ({navigation, route, options, back}) => {
                 const title = getHeaderTitle(options, route.name);
 
                 return (
                   <MyComponent
                     title={title}
+                    navigation={navigation}
                     leftButton={
                       back ? (
                         <MyBackButton onPress={navigation.goBack} />
