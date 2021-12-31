@@ -31,11 +31,21 @@ import {View} from 'react-native';
 import {Colors} from 'react-native-paper';
 import {IconButton} from 'react-native-paper';
 
+import {Appbar} from 'react-native-paper';
+
 const Stack = createNativeStackNavigator();
 
 const theme = {...DefaultTheme};
 
 const App = () => {
+  const MORE_ICON = 'dots-horizontal';
+  const MyComponent = () => (
+    <Appbar.Header>
+      <Appbar.Content title="Title" subtitle={'Subtitle'} />
+      <Appbar.Action icon="magnify" onPress={() => {}} />
+      <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
+    </Appbar.Header>
+  );
   return (
     <NavigationContainer>
       <PaperProvider theme={theme}>
@@ -52,8 +62,8 @@ const App = () => {
               headerTitleStyle: {
                 fontWeight: 'bold',
               },
-              headerShown: false,
-              headerRight: ({}) => {
+              //headerShown: false,
+              headerRight: () => {
                 return (
                   <View>
                     <IconButton
@@ -61,7 +71,7 @@ const App = () => {
                       icon="account"
                       style={{backgroundColor: 'white'}}
                       onPress={() => {
-                        //console.log('User');
+                        //console.log("Navigation", navigation);
                         //navigation.navigate('UserIntent');
                       }}
                     />
@@ -70,7 +80,6 @@ const App = () => {
               },
             }}
           />
-
         </Stack.Navigator>
       </PaperProvider>
     </NavigationContainer>
