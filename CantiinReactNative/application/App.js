@@ -105,6 +105,7 @@ const App = () => {
           icon="account"
           onPress={() => {
             console.log(navigation);
+            navigation.navigate('ProductsList1');
           }}
         />
       </Appbar.Header>
@@ -132,6 +133,43 @@ const App = () => {
                         <MyBackButton onPress={navigation.goBack} />
                       ) : undefined
                     }
+                    style={options.headerStyle}
+                  />
+                );
+              },
+
+              //headerShown: false,
+              headerRight: () => {
+                return (
+                  <View>
+                    <IconButton
+                      size={20}
+                      icon="account"
+                      style={{backgroundColor: 'white'}}
+                      onPress={() => {
+                        //console.log("Navigation", navigation);
+                        //navigation.navigate('UserIntent');
+                      }}
+                    />
+                  </View>
+                );
+              },
+            }}
+          />
+
+          <Stack.Screen
+            name="ProductsList1"
+            component={ProductsListIntent}
+            options={{
+              title: 'Products List',
+
+              header: ({navigation, route, options, back}) => {
+                const title = getHeaderTitle(options, route.name);
+
+                return (
+                  <MyComponent
+                    title={title}
+                    navigation={navigation}
                     style={options.headerStyle}
                   />
                 );
