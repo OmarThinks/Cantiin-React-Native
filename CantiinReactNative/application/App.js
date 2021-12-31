@@ -99,7 +99,7 @@ const App = () => {
     const subtitle = props.subtitle ? props.subtitle : undefined;
     const navigation = props.navigation ? props.navigation : undefined;
     return (
-      <Appbar.Header>
+      <Appbar.Header style={{backgroundColor:"black"}}>
         <Appbar.Content title={props.title} subtitle={subtitle} />
         <Appbar.Action
           icon="account"
