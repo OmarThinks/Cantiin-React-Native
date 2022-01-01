@@ -9,7 +9,11 @@ const CustomHeader = ({
 } = {}) => {
   const headerStyle = {backgroundColor: Colors.black};
   const moveBack = back ? (
-    <Appbar.BackAction onPress={back} />
+    <Appbar.BackAction
+      onPress={() => {
+        back.pop();
+      }}
+    />
   ) : (
     <Fragment />
   );

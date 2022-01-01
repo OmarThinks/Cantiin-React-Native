@@ -78,11 +78,8 @@ const App = () => {
             options={{
               header: ({navigation, route, options, back}) => {
                 const title = 'Account';
-                const moveToProductsListIntent = () => {
-                  navigation.navigate('ProductsList');
-                };
                 return (
-                  <CustomHeader title={title} back={moveToProductsListIntent} />
+                  <CustomHeader title={title} back={navigation} />
                 );
               },
             }}
