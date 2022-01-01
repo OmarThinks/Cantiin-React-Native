@@ -36,20 +36,15 @@ import {Appbar} from 'react-native-paper';
 
 import CustomHeader from './Components/CustomHeader';
 
-
 const Stack = createNativeStackNavigator();
 
 const theme = {...DefaultTheme};
 
-
-
-
 const App = () => {
-  const MORE_ICON = 'dots-horizontal';
   return (
     <NavigationContainer>
       <PaperProvider theme={theme}>
-        <Stack.Navigator initialRouteName="ProductsList">
+        <Stack.Navigator initialRouteName="ProductsListIntent">
           <Stack.Screen
             name="ProductsList"
             component={ProductsListIntent}
@@ -58,17 +53,15 @@ const App = () => {
 
               header: ({navigation, route, options, back}) => {
                 const title = getHeaderTitle(options, route.name);
-
+                const moveToUserIntent = () => {
+                  navigation.navigate('AccountIntent');
+                };
                 return (
                   <CustomHeader
                     title={title}
                     navigation={navigation}
-                    leftButton={
-                      back ? (
-                        <MyBackButton onPress={navigation.goBack} />
-                      ) : undefined
-                    }
                     style={options.headerStyle}
+                    onPress={moveToUserIntent}
                   />
                 );
               },
@@ -81,10 +74,7 @@ const App = () => {
                       size={20}
                       icon="account"
                       style={{backgroundColor: 'white'}}
-                      onPress={() => {
-                        //console.log("Navigation", navigation);
-                        //navigation.navigate('UserIntent');
-                      }}
+                      onPress={() => {}}
                     />
                   </View>
                 );
@@ -93,8 +83,8 @@ const App = () => {
           />
 
           <Stack.Screen
-            name="ProductsList1"
-            component={ProductsListIntent}
+            name="AccountIntent"
+            component={UserIntent}
             options={{
               title: 'Products List',
 
