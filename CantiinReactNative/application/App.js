@@ -78,9 +78,7 @@ const App = () => {
             options={{
               header: ({navigation, route, options, back}) => {
                 const title = 'Account';
-                return (
-                  <CustomHeader title={title} back={navigation} />
-                );
+                return <CustomHeader title={title} back={navigation} />;
               },
             }}
           />
