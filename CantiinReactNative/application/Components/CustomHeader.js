@@ -4,21 +4,10 @@ import {Appbar, Colors} from 'react-native-paper';
 const CustomHeader = ({
   title = 'default title',
   subtitle = '',
-  navigation = undefined,
-  onPress = () => {},
+  rightContent = <Fragment />,
 } = {}) => {
   const headerStyle = {backgroundColor: Colors.black};
 
-  const rightContent = (
-    <Fragment>
-      <Appbar.Action
-        icon="account"
-        onPress={onPress}
-        color={Colors.white}
-        style={{backgroundColor: Colors.grey800}}
-      />
-    </Fragment>
-  );
   return (
     <Appbar.Header style={headerStyle}>
       <Appbar.Content title={title} subtitle={subtitle} style={headerStyle} />

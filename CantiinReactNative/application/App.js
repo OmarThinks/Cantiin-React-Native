@@ -59,8 +59,14 @@ const App = () => {
                     title={title}
                     navigation={navigation}
                     style={options.headerStyle}
-                    onPress={moveToUserIntent}
-                    rightContent={null}
+                    rightContent={
+                      <Appbar.Action
+                        icon="account"
+                        onPress={moveToUserIntent}
+                        color={Colors.white}
+                        style={{backgroundColor: Colors.grey800}}
+                      />
+                    }
                   />
                 );
               },
