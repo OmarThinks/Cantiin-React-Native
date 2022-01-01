@@ -1,28 +1,31 @@
 import React, {Fragment} from 'react';
 import {Colors, TextInput} from 'react-native-paper';
+import {View} from 'react-native';
 
 const CustomInputField = ({
   label,
-  mode = 'outlined',
-  outlineColor = Colors.green300,
-  activeOutlineColor = Colors.green700,
-  style = {backgroundColor: Colors.grey100, margin: 10},
-  additionalStyle={},
-  placeholderTextColor = Colors.grey700,
-  secureTextEntry=false
+  outlineColor = Colors.green400,
+  activeOutlineColor = Colors.green900,
+  style = {backgroundColor: Colors.grey100},
+  additionalStyle = {},
+  placeholderTextColor = Colors.black,
+  secureTextEntry = false,
+  fontSize=20,
 } = {}) => {
   return (
-    <TextInput
-      label={label}
-      //value={""}
-      //onChangeText={text => setText(text)}
-      mode={mode}
-      outlineColor={outlineColor}
-      activeOutlineColor={activeOutlineColor}
-      style={{...style, ...additionalStyle}}
-      placeholderTextColor={placeholderTextColor}
-      secureTextEntry={secureTextEntry}
-    />
+    <View style={{margin: 10}}>
+      <TextInput
+        label={label}
+        //value={""}
+        //onChangeText={text => setText(text)}
+        underlineColor={outlineColor}
+        activeUnderlineColor={activeOutlineColor}
+        style={{...style, ...additionalStyle, fontSize}}
+        placeholderTextColor={placeholderTextColor}
+        secureTextEntry={secureTextEntry}
+        //dense={true}
+      />
+    </View>
   );
 };
 
