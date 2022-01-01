@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Appbar, Colors} from 'react-native-paper';
 
 const CustomHeader = props => {
@@ -7,12 +7,18 @@ const CustomHeader = props => {
   const navigation = props.navigation ? props.navigation : undefined;
   const headerStyle = {backgroundColor: Colors.black};
   const onPress = props.onPress ? props.onPress : () => {};
-  return (
-    <Appbar.Header style={headerStyle}>
-      <Appbar.Content title={title} subtitle={subtitle} />
-      <Appbar.Action icon="account" onPress={onPress} />
-    </Appbar.Header>
+  const rightContent = (
+    <Fragment>
+      <Appbar.Content title={title} subtitle={subtitle} style={headerStyle} />
+      <Appbar.Action
+        icon="account"
+        onPress={onPress}
+        color={Colors.white}
+        style={{backgroundColor: Colors.grey800}}
+      />
+    </Fragment>
   );
+  return <Appbar.Header style={headerStyle}>{rightContent}</Appbar.Header>;
 };
 
 export default CustomHeader;

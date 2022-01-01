@@ -49,10 +49,8 @@ const App = () => {
             name="ProductsList"
             component={ProductsListIntent}
             options={{
-              title: 'Products List',
-
               header: ({navigation, route, options, back}) => {
-                const title = getHeaderTitle(options, route.name);
+                const title = 'Products List';
                 const moveToUserIntent = () => {
                   navigation.navigate('AccountIntent');
                 };
@@ -62,21 +60,8 @@ const App = () => {
                     navigation={navigation}
                     style={options.headerStyle}
                     onPress={moveToUserIntent}
+                    rightContent={null}
                   />
-                );
-              },
-
-              //headerShown: false,
-              headerRight: () => {
-                return (
-                  <View>
-                    <IconButton
-                      size={20}
-                      icon="account"
-                      style={{backgroundColor: 'white'}}
-                      onPress={() => {}}
-                    />
-                  </View>
                 );
               },
             }}
@@ -86,34 +71,16 @@ const App = () => {
             name="AccountIntent"
             component={UserIntent}
             options={{
-              title: 'Products List',
-
               header: ({navigation, route, options, back}) => {
-                const title = getHeaderTitle(options, route.name);
+                const title = 'Account';
 
                 return (
                   <CustomHeader
                     title={title}
                     navigation={navigation}
                     style={options.headerStyle}
+                    rightContent={null}
                   />
-                );
-              },
-
-              //headerShown: false,
-              headerRight: () => {
-                return (
-                  <View>
-                    <IconButton
-                      size={20}
-                      icon="account"
-                      style={{backgroundColor: 'white'}}
-                      onPress={() => {
-                        //console.log("Navigation", navigation);
-                        //navigation.navigate('UserIntent');
-                      }}
-                    />
-                  </View>
                 );
               },
             }}
