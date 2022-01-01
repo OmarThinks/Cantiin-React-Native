@@ -9,6 +9,7 @@ const CustomInputField = ({
   style = {backgroundColor: Colors.grey100, margin: 10},
   additionalStyle={},
   placeholderTextColor = Colors.grey700,
+  secureTextEntry=false
 } = {}) => {
   return (
     <TextInput
@@ -20,6 +21,7 @@ const CustomInputField = ({
       activeOutlineColor={activeOutlineColor}
       style={{...style, ...additionalStyle}}
       placeholderTextColor={placeholderTextColor}
+      secureTextEntry={secureTextEntry}
     />
   );
 };
