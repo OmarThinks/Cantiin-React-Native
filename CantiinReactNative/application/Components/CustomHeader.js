@@ -5,11 +5,18 @@ const CustomHeader = ({
   title = 'default title',
   subtitle = '',
   rightContent = <Fragment />,
+  back = undefined,
 } = {}) => {
   const headerStyle = {backgroundColor: Colors.black};
+  const moveBack = back ? (
+    <Appbar.BackAction onPress={back} />
+  ) : (
+    <Fragment />
+  );
 
   return (
     <Appbar.Header style={headerStyle}>
+      {moveBack}
       <Appbar.Content title={title} subtitle={subtitle} style={headerStyle} />
       {rightContent}
     </Appbar.Header>

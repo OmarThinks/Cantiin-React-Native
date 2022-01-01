@@ -58,7 +58,6 @@ const App = () => {
                   <CustomHeader
                     title={title}
                     navigation={navigation}
-                    style={options.headerStyle}
                     rightContent={
                       <Appbar.Action
                         icon="account"
@@ -79,14 +78,11 @@ const App = () => {
             options={{
               header: ({navigation, route, options, back}) => {
                 const title = 'Account';
-
+                const moveToProductsListIntent = () => {
+                  navigation.navigate('ProductsList');
+                };
                 return (
-                  <CustomHeader
-                    title={title}
-                    navigation={navigation}
-                    style={options.headerStyle}
-                    rightContent={null}
-                  />
+                  <CustomHeader title={title} back={moveToProductsListIntent} />
                 );
               },
             }}
