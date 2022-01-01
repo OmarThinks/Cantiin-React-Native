@@ -149,7 +149,8 @@ export default function ProductsListIntent() {
           }}
           labelStyle={{fontSize: 20}}
           disabled={loading}
-          loading={loading}>
+          loading={loading}
+          contentStyle={{padding: 10}}>
           Refresh
         </Button>
       </SafeAreaView>
