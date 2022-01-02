@@ -140,17 +140,11 @@ export default function ProductsListIntent() {
             setLoading(true);
             loadPage();
           }}
-          style={{
-            backgroundColor: Colors.green300,
-            width: '50%',
-            alignSelf: 'center',
-            padding: 10,
-            fontSize: 30,
-          }}
+          style={styles.requestButton}
           labelStyle={{fontSize: 20}}
           disabled={loading}
           loading={loading}
-          contentStyle={{padding: 10}}>
+          contentStyle={styles.requestButtonContent}>
           Refresh
         </Button>
       </SafeAreaView>

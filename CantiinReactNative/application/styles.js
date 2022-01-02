@@ -75,6 +75,15 @@ const loginErrortext = {
   fontSize: 25,
 };
 
+const requestButton = {
+  backgroundColor: Colors.green300,
+  width: '50%',
+  alignSelf: 'center',
+  fontSize: 30,
+  margin: 25,
+};
+const requestButtonContent = {padding: 10};
+
 const styles = StyleSheet.create({
   mainContainer,
   mainAccountContainer,
@@ -89,6 +98,8 @@ const styles = StyleSheet.create({
   itemBackgroundColor,
   cardStyle,
   loginErrortext,
+  requestButton,
+  requestButtonContent,
 });
 
 export default styles;

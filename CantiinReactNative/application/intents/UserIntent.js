@@ -63,18 +63,12 @@ export default function UserIntent() {
               setLoading(false);
             });
         }}
-        style={{
-          backgroundColor: Colors.green300,
-          width: '50%',
-          alignSelf: 'center',
-          fontSize: 30,
-          margin: 25,
-        }}
+        style={styles.requestButton}
         labelStyle={{fontSize: 20}}
         disabled={loading}
         loading={loading}
         compact={false}
-        contentStyle={{padding: 10}}>
+        contentStyle={styles.requestButtonContent}>
         Log In
       </Button>
     </SafeAreaView>
