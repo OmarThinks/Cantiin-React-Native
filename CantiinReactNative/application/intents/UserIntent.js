@@ -78,9 +78,10 @@ export default function UserIntent() {
               data.json().then(jsonData=>console.log(jsonData));
             })
             .catch(() => {
+              console.log("failed");
               setLoginFailedText(
                 'Something went wrong, Try again later, maybe you are not connected to the internet',
-              );
+              );setLoading(false);
             })
             .finally(() => {
               setLoading(false);
