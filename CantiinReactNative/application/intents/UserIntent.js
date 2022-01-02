@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useContext} from 'react';
+import React, {useState, Fragment, useContext, useEffect} from 'react';
 import {Text, Button} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
@@ -12,8 +12,10 @@ export default function UserIntent() {
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
-  const accountContext = useContext(AccountContext);
-  console.log("setToken", accountContext);
+  const {data, setAccountToken, logoutAccount} = useContext(AccountContext);
+  //logoutAccount();
+  //useEffect(() => logoutAccount(), data.token);
+  console.log("setToken", data);
 
   const errorTextFragment = loginFailedText ? (
     <Text style={styles.loginErrortext}>{loginFailedText}</Text>
@@ -45,7 +47,7 @@ export default function UserIntent() {
           const token = cookieData['Secure, sessionid'];
           console.log(token);
           //console.log(cookieData['Secure, sessionid']);
-          accountContext.setAccountToken(token);
+          setAccountToken(token);
         }
         data.json().then(jsonData => {
           //console.log(jsonData);
