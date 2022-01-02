@@ -83,7 +83,7 @@ const requestButton = {
   margin: 25,
 };
 const requestButtonContent = {padding: 10};
-
+const requestButtonLabel = {fontSize: 20};
 const styles = StyleSheet.create({
   mainContainer,
   mainAccountContainer,
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   loginErrortext,
   requestButton,
   requestButtonContent,
+  requestButtonLabel
 });
 
 export default styles;

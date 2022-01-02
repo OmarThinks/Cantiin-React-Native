@@ -1,6 +1,6 @@
 import React, {useState, Fragment} from 'react';
-import {Colors, TouchableRipple, Text, View, Button} from 'react-native-paper';
-import {SafeAreaView, FlatList, StyleSheet} from 'react-native';
+import {Text, Button} from 'react-native-paper';
+import {SafeAreaView} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
@@ -70,7 +70,7 @@ export default function UserIntent() {
       <Button
         onPress={handleLoginPress}
         style={styles.requestButton}
-        labelStyle={{fontSize: 20}}
+        labelStyle={styles.requestButtonLabel}
         disabled={loading}
         loading={loading}
         compact={false}
