@@ -2,9 +2,15 @@ import React, {useState} from 'react';
 import {Colors, TouchableRipple, Text, View, Button} from 'react-native-paper';
 import {SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
+const axios = require('axios');
+
+
+('https://cantiin.com/api/auth/custom/login/');
+
 export default function UserIntent() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [loading, setLoading] = useState(false);
 
   return (
     <SafeAreaView style={{backgroundColor: Colors.grey400, height: '100%'}}>
@@ -22,8 +28,8 @@ export default function UserIntent() {
 
       <Button
         onPress={() => {
-          //setLoading(true);
-          //loadPage();
+          setLoading(true);
+          
         }}
         style={{
           backgroundColor: Colors.green300,
@@ -33,8 +39,8 @@ export default function UserIntent() {
           margin: 25,
         }}
         labelStyle={{fontSize: 20}}
-        //disabled={loading}
-        //loading={loading}
+        disabled={loading}
+        loading={loading}
         compact={false}
         contentStyle={{padding: 10}}>
         Log In
