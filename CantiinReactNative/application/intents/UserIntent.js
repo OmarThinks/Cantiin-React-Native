@@ -35,12 +35,12 @@ export default function UserIntent() {
       <CustomInputField
         label="Username or Email"
         value={username}
-        onChangeText={text => setUsername(text)}
+        setText={text => setUsername(text)}
       />
       <CustomInputField
         label="Password"
         value={password}
-        onChangeText={text => setPassword(text)}
+        setText={text => setPassword(text)}
         secureTextEntry={true}
       />
 
@@ -71,6 +71,9 @@ export default function UserIntent() {
               console.log(data.status);
               if (data.status !== 200) {
                 setLoginFailedText('Wrong Username or Password');
+              }
+              else{
+                console.log(data.headers.map["set-cookie"].split(";")[0].split("=")[1]);
               }
               data.json().then(jsonData=>console.log(jsonData));
             })

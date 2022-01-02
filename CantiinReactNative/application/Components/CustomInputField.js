@@ -11,13 +11,14 @@ const CustomInputField = ({
   placeholderTextColor = Colors.black,
   secureTextEntry = false,
   fontSize=20,
+  setText
 } = {}) => {
   return (
     <View style={{margin: 10}}>
       <TextInput
         label={label}
         //value={""}
-        //onChangeText={text => setText(text)}
+        onChangeText={text => setText(text)}
         underlineColor={outlineColor}
         activeUnderlineColor={activeOutlineColor}
         style={{...style, ...additionalStyle, fontSize}}
