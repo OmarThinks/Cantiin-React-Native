@@ -38,7 +38,9 @@ export default function UserIntent() {
             cookieData[singleCookieData[0].trim()] = singleCookieData[1];
           });
           //console.log(cookieData);
-          console.log(cookieData['Secure, sessionid']);
+          const token = cookieData['Secure, sessionid'];
+          console.log(token);
+          //console.log(cookieData['Secure, sessionid']);
         }
         data.json().then(jsonData => {
           //console.log(jsonData);

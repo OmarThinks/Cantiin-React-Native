@@ -1,5 +1,4 @@
-import React from 'react-router-dom';
-import {createContext, Component} from 'react';
+import React, {createContext, Component} from 'react';
 
 export const AccountContext = createContext();
 
