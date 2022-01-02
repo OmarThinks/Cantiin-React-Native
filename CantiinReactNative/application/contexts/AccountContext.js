@@ -1,5 +1,4 @@
 import React, {createContext, Component} from 'react';
-
 export const AccountContext = createContext();
 
 /*
@@ -34,7 +33,7 @@ class AccountContextProvider extends Component {
 
   render() {
     const parsedContext = {
-      ...this.state,
+      data: this.state,
       setAccountToken: this.setAccountToken,
       refreshAccountData: this.refreshAccountData,
     };

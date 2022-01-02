@@ -1,15 +1,19 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, useContext} from 'react';
 import {Text, Button} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
+import { AccountContext } from '../contexts/AccountContext';
+
 
 export default function UserIntent() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
+  const {setAccountToken} = useContext(AccountContext);
+  console.log("setToken", setAccountToken);
 
   const errorTextFragment = loginFailedText ? (
     <Text style={styles.loginErrortext}>{loginFailedText}</Text>
