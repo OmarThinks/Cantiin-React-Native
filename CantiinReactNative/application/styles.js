@@ -3,6 +3,10 @@ import {StyleSheet} from 'react-native';
 import {Colors} from 'react-native-paper';
 
 const mainContainer = {height: '100%', width: '100%'};
+const mainAccountContainer = {
+  ...mainContainer,
+  backgroundColor: Colors.grey400,
+};
 const mainFootBar = {
   height: '10%',
   width: '100%',
@@ -10,7 +14,7 @@ const mainFootBar = {
 };
 const mainContent = {height: '90%', width: '100%'};
 const mainDivider = {height: 3};
-const footerButtonView = {width: '50%', height: '100%', padding: 7 };
+const footerButtonView = {width: '50%', height: '100%', padding: 7};
 const footerButton = {
   width: '100%',
   height: '100%',
@@ -64,8 +68,16 @@ const cardStyle = available => {
   };
 };
 
+const loginErrortext = {
+  width: '100%',
+  textAlign: 'center',
+  color: Colors.red800,
+  fontSize: 25,
+};
+
 const styles = StyleSheet.create({
   mainContainer,
+  mainAccountContainer,
   mainFootBar,
   mainContent,
   mainDivider,
@@ -76,6 +88,7 @@ const styles = StyleSheet.create({
   itemColor,
   itemBackgroundColor,
   cardStyle,
+  loginErrortext,
 });
 
 export default styles;

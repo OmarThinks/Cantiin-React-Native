@@ -2,25 +2,8 @@ import React, {useState, Fragment} from 'react';
 import {Colors, TouchableRipple, Text, View, Button} from 'react-native-paper';
 import {SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
-const axios = require('axios');
-
-
-async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response; // parses JSON response into native JavaScript objects
-}
+import sendData from '../helpers/sendData';
+import styles from '../styles';
 
 export default function UserIntent() {
   const [username, setUsername] = React.useState('');
@@ -28,8 +11,14 @@ export default function UserIntent() {
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
 
+  const errorTextFragment = loginFailedText ? (
+    <Text style={styles.loginErrortext}>{loginFailedText}</Text>
+  ) : (
+    <Fragment />
+  );
+
   return (
-    <SafeAreaView style={{backgroundColor: Colors.grey400, height: '100%'}}>
+    <SafeAreaView style={styles.mainAccountContainer}>
       <CustomInputField
         label="Username or Email"
         value={username}
@@ -42,25 +31,13 @@ export default function UserIntent() {
         secureTextEntry={true}
       />
 
-      {loginFailedText ? (
-        <Text
-          style={{
-            width: '100%',
-            textAlign: 'center',
-            color: Colors.red800,
-            fontSize: 25,
-          }}>
-          {loginFailedText}
-        </Text>
-      ) : (
-        <Fragment />
-      )}
+      {errorTextFragment}
       <Button
         onPress={() => {
           setLoading(true);
-          setLoginFailedText("");
-          console.log({username,password});
-          postData('https://cantiin.com/api/auth/custom/login/', {
+          setLoginFailedText('');
+          console.log({username, password});
+          sendData('POST', 'https://cantiin.com/api/auth/custom/login/', {
             username,
             password,
           })
@@ -69,14 +46,15 @@ export default function UserIntent() {
               console.log(data.status);
               if (data.status !== 200) {
                 setLoginFailedText('Wrong Username or Password');
+              } else {
+                console.log(
+                  data.headers.map['set-cookie'].split(';')[0].split('=')[1],
+                );
               }
-              else{
-                console.log(data.headers.map["set-cookie"].split(";")[0].split("=")[1]);
-              }
-              data.json().then(jsonData=>console.log(jsonData));
+              data.json().then(jsonData => console.log(jsonData));
             })
             .catch(() => {
-              console.log("failed");
+              console.log('failed');
               setLoginFailedText(
                 'Something went wrong, Try again later, maybe you are not connected to the internet',
               );
