@@ -12,8 +12,8 @@ export default function UserIntent() {
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
-  const {setAccountToken} = useContext(AccountContext);
-  console.log("setToken", setAccountToken);
+  const accountContext = useContext(AccountContext);
+  console.log("setToken", accountContext);
 
   const errorTextFragment = loginFailedText ? (
     <Text style={styles.loginErrortext}>{loginFailedText}</Text>
@@ -45,6 +45,7 @@ export default function UserIntent() {
           const token = cookieData['Secure, sessionid'];
           console.log(token);
           //console.log(cookieData['Secure, sessionid']);
+          accountContext.setAccountToken(token);
         }
         data.json().then(jsonData => {
           //console.log(jsonData);

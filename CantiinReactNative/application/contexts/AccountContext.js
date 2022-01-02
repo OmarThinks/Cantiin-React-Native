@@ -15,11 +15,9 @@ class AccountContextProvider extends Component {
     token: null,
   };
 
-  setAccountToken = () => {
+  setAccountToken = inputToken => {
     this.setState({
-      user: null,
-      userData: null,
-      userId: null,
+      token: inputToken,
     });
   };
 
