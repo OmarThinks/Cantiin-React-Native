@@ -16,6 +16,8 @@ import {
   Provider as PaperProvider,
   DarkTheme,
 } from 'react-native-paper';
+import AccountContextProvider from './contexts/AccountContext';
+
 import {Avatar} from 'react-native-paper';
 
 import {
@@ -44,45 +46,47 @@ const App = () => {
   return (
     <NavigationContainer>
       <PaperProvider theme={theme}>
-        <Stack.Navigator initialRouteName="ProductsListIntent">
-          <Stack.Screen
-            name="ProductsList"
-            component={ProductsListIntent}
-            options={{
-              header: ({navigation, route, options, back}) => {
-                const title = 'Products List';
-                const moveToUserIntent = () => {
-                  navigation.navigate('AccountIntent');
-                };
-                return (
-                  <CustomHeader
-                    title={title}
-                    navigation={navigation}
-                    rightContent={
-                      <Appbar.Action
-                        icon="account"
-                        onPress={moveToUserIntent}
-                        color={Colors.white}
-                        style={{backgroundColor: Colors.grey800}}
-                      />
-                    }
-                  />
-                );
-              },
-            }}
-          />
+        <AccountContextProvider>
+          <Stack.Navigator initialRouteName="ProductsListIntent">
+            <Stack.Screen
+              name="ProductsList"
+              component={ProductsListIntent}
+              options={{
+                header: ({navigation, route, options, back}) => {
+                  const title = 'Products List';
+                  const moveToUserIntent = () => {
+                    navigation.navigate('AccountIntent');
+                  };
+                  return (
+                    <CustomHeader
+                      title={title}
+                      navigation={navigation}
+                      rightContent={
+                        <Appbar.Action
+                          icon="account"
+                          onPress={moveToUserIntent}
+                          color={Colors.white}
+                          style={{backgroundColor: Colors.grey800}}
+                        />
+                      }
+                    />
+                  );
+                },
+              }}
+            />
 
-          <Stack.Screen
-            name="AccountIntent"
-            component={UserIntent}
-            options={{
-              header: ({navigation, route, options, back}) => {
-                const title = 'Account';
-                return <CustomHeader title={title} back={navigation} />;
-              },
-            }}
-          />
-        </Stack.Navigator>
+            <Stack.Screen
+              name="AccountIntent"
+              component={UserIntent}
+              options={{
+                header: ({navigation, route, options, back}) => {
+                  const title = 'Account';
+                  return <CustomHeader title={title} back={navigation} />;
+                },
+              }}
+            />
+          </Stack.Navigator>
+        </AccountContextProvider>
       </PaperProvider>
     </NavigationContainer>
   );
