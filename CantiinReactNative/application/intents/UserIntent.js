@@ -4,7 +4,6 @@ import {SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 const axios = require('axios');
 
-('https://cantiin.com/api/auth/custom/login/');
 
 async function postData(url = '', data = {}) {
   // Default options are marked with *
@@ -15,7 +14,6 @@ async function postData(url = '', data = {}) {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -81,7 +79,7 @@ export default function UserIntent() {
               console.log("failed");
               setLoginFailedText(
                 'Something went wrong, Try again later, maybe you are not connected to the internet',
-              );setLoading(false);
+              );
             })
             .finally(() => {
               setLoading(false);
