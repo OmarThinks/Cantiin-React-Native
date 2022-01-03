@@ -11,28 +11,34 @@ logout
 
 const AccountContextProvider = props => {
   const [accountData, setAccountData] = useState({
-    userId: null,
     userData: null,
     token: null,
   });
   console.log('current Account state is');
   console.log(accountData);
-  const refreshAccountData = (token = null) => {
-    if (!(accountData.token || token)) {
+  const refreshAccountData = (inputToken = null) => {
+    const token = accountData.token || inputToken;
+    console.log("token is", token)
+    if (!token) {
       console.log('I found that token is null', accountData, token);
-      setAccountData({userId: null, userData: null, token: null});
+      setAccountData({userData: null, token: null});
       return;
     }
 
     //const kjfdskjh= `fkj`;
     console.log('I got the token');
-    console.log(`sessionid=${accountData.token || token}`); 
+    console.log(`sessionid=${token}`);
     sendData('GET', 'https://www.cantiin.com/api/auth/custom/user/', null, {
-     
-    cookie: `sessionid=${accountData.token || token}`,
+      cookie: `sessionid=${token}`,
     })
       .then(res => {
         console.log(res);
+        console.log(
+          res.json().then(resJSON => {
+            console.log(resJSON);
+            setAccountData({userData: resJSON, token: token});
+          }),
+        );
       })
       .catch(err => {
         console.log('Res went wrong');
@@ -41,7 +47,7 @@ const AccountContextProvider = props => {
   };
 
   const setAccountToken = inputToken => {
-    setAccountData({...accountData, token: inputToken});
+    //setAccountData({...accountData, token: inputToken});
     refreshAccountData(inputToken);
   };
 
