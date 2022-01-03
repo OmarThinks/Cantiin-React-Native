@@ -17,10 +17,37 @@ const getDataJSON = async storage_Key => {
   }
 };
 
+const storeData = async value => {
+  try {
+    await AsyncStorage.setItem('@storage_Key', value);
+  } catch (e) {
+    // saving error
+  }
+};
+
+const storeDataJSON = async value => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('@storage_Key', jsonValue);
+  } catch (e) {
+    // saving error
+  }
+};
+
 const getToken = () => {
   return getData('token');
+};
+
+const storeToken = token => {
+  storeData(token);
 };
 
 const getUserData = () => {
   return getDataJSON('userData');
 };
+
+const storeUserdata = userData => {
+  storeDataJSON(userData);
+};
+
+export {getToken, storeToken, getUserData, storeUserdata};
