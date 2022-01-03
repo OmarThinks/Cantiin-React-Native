@@ -34,7 +34,7 @@ const storeDataJSON = async value => {
   }
 };
 
-const getToken = () => {
+const getToken = async () => {
   return getData('token');
 };
 
@@ -42,8 +42,9 @@ const storeToken = token => {
   storeData(token);
 };
 
-const getUserData = () => {
-  return getDataJSON('userData');
+const getUserData = async () => {
+  const userData = await getDataJSON('userData');
+  return userData;
 };
 
 const storeUserdata = userData => {
