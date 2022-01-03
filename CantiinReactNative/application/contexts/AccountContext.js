@@ -23,12 +23,18 @@ const AccountContextProvider = props => {
       setAccountData({userId: null, userData: null, token: null});
       return;
     }
+
+    //const kjfdskjh= `fkj`;
     console.log('I got the token');
-    sendData('GET', 'https://www.cantiin.com/api/auth/custom/user/')
+    console.log(`sessionid=${accountData.token || token}`); 
+    sendData('GET', 'https://www.cantiin.com/api/auth/custom/user/', null, {
+     
+    cookie: `sessionid=${accountData.token || token}`,
+    })
       .then(res => {
         console.log(res);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Res went wrong');
         console.log(err);
       });
