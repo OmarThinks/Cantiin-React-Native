@@ -49,9 +49,9 @@ export default function UserIntent() {
           //console.log(cookieData['Secure, sessionid']);
           setAccountToken(token);
         }
-        data.json().then(jsonData => {
+        /*data.json().then(jsonData => {
           //console.log(jsonData);
-        });
+        });*/
       })
       .catch(() => {
         //console.log('failed');

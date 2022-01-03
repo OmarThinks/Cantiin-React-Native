@@ -1,4 +1,4 @@
-import React, {createContext, Component} from 'react';
+import React, {createContext, Component, useState} from 'react';
 export const AccountContext = createContext();
 
 /*
@@ -8,7 +8,7 @@ setAccountToken
 refreshAccountData
 logout
 */
-
+/*
 class AccountContextProvider extends Component {
   state = {
     userId: null,
@@ -52,5 +52,49 @@ class AccountContextProvider extends Component {
     );
   }
 }
+*/
+
+const AccountContextProvider = (props) => {
+  const [state, setState] = useState({
+    userId: null,
+    userData: null,
+    token: null,
+  });
+
+  const setAccountToken = inputToken => {
+    setState({...state,
+      token: inputToken,
+    });
+  };
+
+  const refreshAccountData = () => {
+    setState({
+      user: null,
+      userData: null,
+      userId: null,
+    });
+  };
+
+  const logoutAccount = () => {
+    setState({
+      userId: null,
+      userData: null,
+      token: null,
+    });
+  };
+
+  const parsedContext = {
+    data: state,
+    setAccountToken,
+    refreshAccountData,
+    logoutAccount,
+  };
+
+  return (
+    <AccountContext.Provider value={parsedContext}>
+      {props.children}
+    </AccountContext.Provider>
+  );
+};
 
 export default AccountContextProvider;
