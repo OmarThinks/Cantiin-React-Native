@@ -1,4 +1,9 @@
-export default async function sendData(method, url = '', data = null) {
+export default async function sendData(
+  method,
+  url = '',
+  data = null,
+  headers = {},
+) {
   // Default options are marked with *
 
   const requestBody = {
@@ -8,6 +13,7 @@ export default async function sendData(method, url = '', data = null) {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
+      ...headers,
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
