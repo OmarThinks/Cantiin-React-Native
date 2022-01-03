@@ -12,10 +12,10 @@ export default function UserIntent() {
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
-  const {data, setAccountToken, logoutAccount} = useContext(AccountContext);
+  const {accountData, setAccountToken, logoutAccount} = useContext(AccountContext);
   //logoutAccount();
   //useEffect(() => logoutAccount(), data.token);
-  console.log("setToken", data);
+  console.log("accountData", accountData);
 
   const errorTextFragment = loginFailedText ? (
     <Text style={styles.loginErrortext}>{loginFailedText}</Text>

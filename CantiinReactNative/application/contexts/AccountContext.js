@@ -1,6 +1,6 @@
 import React, {createContext, Component, useState} from 'react';
 export const AccountContext = createContext();
-
+import sendData from '../helpers/sendData';
 /*
 state
 
@@ -8,83 +8,47 @@ setAccountToken
 refreshAccountData
 logout
 */
-/*
-class AccountContextProvider extends Component {
-  state = {
-    userId: null,
-    userData: null,
-    token: null,
-  };
 
-  setAccountToken = inputToken => {
-    this.setState({
-      token: inputToken,
-    });
-  };
-
-  refreshAccountData = () => {
-    this.setState({
-      user: null,
-      userData: null,
-      userId: null,
-    });
-  };
-
-  logoutAccount = () => {
-    this.setState({
-      userId: null,
-      userData: null,
-      token: null,
-    });
-  };
-
-  render() {
-    const parsedContext = {
-      data: this.state,
-      setAccountToken: this.setAccountToken,
-      refreshAccountData: this.refreshAccountData,
-      logoutAccount: this.logoutAccount,
-    };
-    return (
-      <AccountContext.Provider value={parsedContext}>
-        {this.props.children}
-      </AccountContext.Provider>
-    );
-  }
-}
-*/
-
-const AccountContextProvider = (props) => {
-  const [state, setState] = useState({
+const AccountContextProvider = props => {
+  const [accountData, setAccountData] = useState({
     userId: null,
     userData: null,
     token: null,
   });
-
-  const setAccountToken = inputToken => {
-    setState({...state,
-      token: inputToken,
-    });
+  console.log('current Account state is');
+  console.log(accountData);
+  const refreshAccountData = (token = null) => {
+    if (!(accountData.token || token)) {
+      console.log('I found that token is null', accountData, token);
+      setAccountData({userId: null, userData: null, token: null});
+      return;
+    }
+    console.log('I got the token');
+    sendData('GET', 'https://www.cantiin.com/api/auth/custom/user/')
+      .then(res => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log('Res went wrong');
+        console.log(err);
+      });
   };
 
-  const refreshAccountData = () => {
-    setState({
-      user: null,
-      userData: null,
-      userId: null,
-    });
+  const setAccountToken = inputToken => {
+    setAccountData({...accountData, token: inputToken});
+    refreshAccountData(inputToken);
   };
 
   const logoutAccount = () => {
-    setState({
+    /*setState({
       userId: null,
       userData: null,
       token: null,
-    });
+    });*/
   };
 
   const parsedContext = {
-    data: state,
+    accountData,
     setAccountToken,
     refreshAccountData,
     logoutAccount,
