@@ -1,6 +1,7 @@
 import React, {createContext, Component, useState} from 'react';
 export const AccountContext = createContext();
 import sendData from '../helpers/sendData';
+
 /*
 state
 
@@ -8,6 +9,11 @@ setAccountToken
 refreshAccountData
 logout
 */
+
+
+
+
+
 
 const AccountContextProvider = props => {
   const [accountData, setAccountData] = useState({
