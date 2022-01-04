@@ -1,21 +1,32 @@
 import React, {useState, Fragment, useContext, useEffect} from 'react';
-import {Text, Button} from 'react-native-paper';
+import {Text, Button, ActivityIndicator, Colors} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
-import { AccountContext } from '../contexts/AccountContext';
-
+import {AccountContext} from '../contexts/AccountContext';
 
 export default function UserIntent() {
+  
+  const initialIntentView = (
+  <SafeAreaView style={{...styles.LoadingScreen}}>
+  
+  <ActivityIndicator animating={true} color={Colors.red800} />
+  </SafeAreaView>
+  );
+  
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
   const [loginFailedText, setLoginFailedText] = useState('');
-  const {accountData, setAccountToken, logoutAccount} = useContext(AccountContext);
+  const [intentView, setIntentView] = useState(
+    initialIntentView
+  );
+  const {accountData, setAccountToken, logoutAccount} =
+    useContext(AccountContext);
   //logoutAccount();
   //useEffect(() => logoutAccount(), data.token);
-  console.log("accountData", accountData);
+  console.log('accountData', accountData);
 
   const errorTextFragment = loginFailedText ? (
     <Text style={styles.loginErrortext}>{loginFailedText}</Text>
@@ -63,6 +74,9 @@ export default function UserIntent() {
         setLoading(false);
       });
   };
+
+  return intentView;
+
   return (
     <SafeAreaView style={styles.mainAccountContainer}>
       <CustomInputField

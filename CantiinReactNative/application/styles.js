@@ -84,6 +84,13 @@ const requestButton = {
 };
 const requestButtonContent = {padding: 10};
 const requestButtonLabel = {fontSize: 20};
+
+const LoadingScreen = {
+  width: '100%',
+  height: '100%',
+  backgroundColor: Colors.green900,
+};
+
 const styles = StyleSheet.create({
   mainContainer,
   mainAccountContainer,
@@ -100,7 +107,8 @@ const styles = StyleSheet.create({
   loginErrortext,
   requestButton,
   requestButtonContent,
-  requestButtonLabel
+  requestButtonLabel,
+  LoadingScreen,
 });
 
 export default styles;

@@ -38,82 +38,61 @@ const AccountContextProvider = props => {
     }
   });
 
-  useEffect(
-    /*
+  useEffect(() => {
+    if (accountData.initialized === true) {
+      (async () => {
+        const token = await getToken();
 
-    ()=>{
-    (() => {
-    if (accountData.initialized) {
-      storeToken(accountData.token);
-      storeUserdata(accountData.userData);
-    })()
-  */
-
-    () => {
-      if (accountData.initialized === true) {
-        (async () => {
-          const token = await getToken();
-
-          //if (token) {
-          //  return;
-          //} // The user is already logged in, but
-          const userData = await getUserData();
-          storeToken(accountData.token);
-          storeUserdata(accountData.userData);
-        })();
-      }
-    },
-
-    [accountData],
-  );
+        //if (token) {
+        //  return;
+        //} // The user is already logged in, but
+        const userData = await getUserData();
+        storeToken(accountData.token);
+        storeUserdata(accountData.userData);
+      })();
+    }
+  }, [accountData]);
 
   (async () => {
-    const storedToken = await getToken();
-    const storedUserData = await getUserData();
-    console.log('stored Token is');
-    console.log(storedToken);
-    console.log('stored UserData is');
-    console.log(storedUserData);
+    //const storedToken = await getToken();
+    //const storedUserData = await getUserData();
+    //console.log('stored Token is');
+    //console.log(storedToken);
+    //console.log('stored UserData is');
+    //console.log(storedUserData);
   })();
 
-  getUserData().then(u => {
-    console.log('userdata is ', u);
-  });
+  //console.log('current Account state is');
+  //console.log(accountData);
 
-  console.log('current Account state is');
-  console.log(accountData);
   const refreshAccountData = (inputToken = null) => {
     const token = accountData.token || inputToken;
-    console.log('token is', token);
+    //console.log('token is', token);
     if (!token) {
-      console.log('I found that token is null', accountData, token);
+      //console.log('I found that token is null', accountData, token);
       setAccountData({...accountData, userData: null, token: null});
       return;
     }
 
-    //const kjfdskjh= `fkj`;
-    console.log('I got the token');
-    console.log(`sessionid=${token}`);
+    //console.log('I got the token');
+    //console.log(`sessionid=${token}`);
     sendData('GET', 'https://www.cantiin.com/api/auth/custom/user/', null, {
       cookie: `sessionid=${token}`,
     })
       .then(res => {
-        console.log(res);
-        console.log(
-          res.json().then(resJSON => {
-            console.log(resJSON);
-            setAccountData({...accountData, userData: resJSON, token: token});
-          }),
-        );
+        //console.log(res);
+        res.json().then(resJSON => {
+          //console.log(resJSON);
+          setAccountData({...accountData, userData: resJSON, token: token});
+        });
       })
       .catch(err => {
-        console.log('Res went wrong');
-        console.log(err);
+        //console.log('Res went wrong');
+        //console.log(err);
       });
   };
 
   const setAccountToken = inputToken => {
-    //setAccountData({...accountData, token: inputToken});
     refreshAccountData(inputToken);
   };
 
