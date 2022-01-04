@@ -6,6 +6,7 @@ import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 import UserIntentLogin from './UserIntentLogin';
+import UserIntentLogout from './UserIntentLogout';
 
 export default function UserIntent() {
   const initialIntentView = (
@@ -14,5 +15,6 @@ export default function UserIntent() {
     </SafeAreaView>
   );
 
-  return <UserIntentLogin />;
+  //return <UserIntentLogin />;
+  return <UserIntentLogout />;
 }
