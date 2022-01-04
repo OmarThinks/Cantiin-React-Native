@@ -38,12 +38,34 @@ const AccountContextProvider = props => {
     }
   });
 
-  useEffect(() => {
+  useEffect(
+    /*
+
+    ()=>{
+    (() => {
     if (accountData.initialized) {
       storeToken(accountData.token);
       storeUserdata(accountData.userData);
-    }
-  }, [accountData]);
+    })()
+  */
+
+    () => {
+      if (accountData.initialized === true) {
+        (async () => {
+          const token = await getToken();
+
+          //if (token) {
+          //  return;
+          //} // The user is already logged in, but
+          const userData = await getUserData();
+          storeToken(accountData.token);
+          storeUserdata(accountData.userData);
+        })();
+      }
+    },
+
+    [accountData],
+  );
 
   (async () => {
     const storedToken = await getToken();
