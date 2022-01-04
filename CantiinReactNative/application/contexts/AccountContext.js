@@ -1,4 +1,4 @@
-import React, {createContext, Component, useState} from 'react';
+import React, {createContext, Component, useState, useEffect} from 'react';
 export const AccountContext = createContext();
 import sendData from '../helpers/sendData';
 
@@ -15,29 +15,28 @@ state
 setAccountToken
 refreshAccountData
 logout
-
- {
-    userData: getUserData(),
-    token: getToken(),
-  }
-    (async () => {
-      const userData = await getUserData();
-      const token = await getToken();
-      return {userData, token};
-    })(),
 */
 
 const AccountContextProvider = props => {
-  const [accountData, setAccountData] = useState(
-    {
-      userData: 
-      (async ()=> {
-        return await getUserData();  // I will invoke myself
-      })()
-      ,
-      token: getToken(),
+  const [accountData, setAccountData] = useState({
+    userData: null,
+    token: null,
+    initialized: false,
+  });
+
+  useEffect(() => {
+    if (accountData.initialized === false) {
+      (async () => {
+        const token = await getToken();
+        const userData = await getUserData();
+        setAccountData({
+          userData,
+          token,
+          initialized: true,
+        });
+      })();
     }
-  );
+  });
 
   getUserData().then(u => {
     console.log('userdata is ', u);
