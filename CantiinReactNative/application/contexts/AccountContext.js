@@ -6,7 +6,7 @@ import {
   getToken,
   getUserData,
   storeToken,
-  storeUserData,
+  storeUserdata,
 } from '../helpers/Storage/accountStorage';
 
 /*
@@ -38,6 +38,22 @@ const AccountContextProvider = props => {
     }
   });
 
+  useEffect(() => {
+    if (accountData.initialized) {
+      storeToken(accountData.token);
+      storeUserdata(accountData.userData);
+    }
+  }, [accountData]);
+
+  (async () => {
+    const storedToken = await getToken();
+    const storedUserData = await getUserData();
+    console.log('stored Token is');
+    console.log(storedToken);
+    console.log('stored UserData is');
+    console.log(storedUserData);
+  })();
+
   getUserData().then(u => {
     console.log('userdata is ', u);
   });
@@ -49,7 +65,7 @@ const AccountContextProvider = props => {
     console.log('token is', token);
     if (!token) {
       console.log('I found that token is null', accountData, token);
-      setAccountData({userData: null, token: null});
+      setAccountData({...accountData, userData: null, token: null});
       return;
     }
 
@@ -64,7 +80,7 @@ const AccountContextProvider = props => {
         console.log(
           res.json().then(resJSON => {
             console.log(resJSON);
-            setAccountData({userData: resJSON, token: token});
+            setAccountData({...accountData, userData: resJSON, token: token});
           }),
         );
       })
