@@ -9,8 +9,18 @@ import {AccountContext} from '../contexts/AccountContext';
 export default function UserIntentLogout() {
 
   return (
-    <SafeAreaView style={styles.mainAccountContainer}>
-        <Text>Logout</Text>
+    <SafeAreaView style={{...styles.mainAccountContainer, 
+    justifyContent:"center"}}>
+      <Button
+        //onPress={handleLoginPress}
+        style={{...styles.requestButton}}
+        labelStyle={styles.requestButtonLabel}
+        //disabled={loading}
+        //loading={loading}
+        compact={false}
+        contentStyle={styles.requestButtonContent}>
+        Log Out
+      </Button>
     </SafeAreaView>
   );
 }
