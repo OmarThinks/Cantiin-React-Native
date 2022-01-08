@@ -13,13 +13,12 @@ export default function AccountIntent() {
   const {accountData, refreshAccountData} = useContext(AccountContext);
   const token = accountData.token;
   const userData = accountData.userData;
-
-  if (token) {
-    if (userData == null) {
-      refreshAccountData();
-    }
-    return <AccountIntentLogout />;
-  } else {
+  console.log(accountData);
+  if (token == null) {
     return <AccountIntentLogin />;
   }
+  if (userData == null) {
+    refreshAccountData();
+  }
+  return <AccountIntentLogout />;
 }
