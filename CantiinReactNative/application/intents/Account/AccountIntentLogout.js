@@ -19,8 +19,7 @@ export default function AccountIntentLogout() {
     console.log('accountData is', accountData.userData.id);
     additionalContent = (
       <Fragment>
-        <Paragraph> {accountData.userData.id}</Paragraph>
-        <Paragraph>{accountData.userData.username}</Paragraph>
+        <Text style={{...styles.userData}}>Your Username: {accountData.userData.username}</Text>
       </Fragment>
     );
   }

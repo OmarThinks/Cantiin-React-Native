@@ -46,6 +46,12 @@ const footerButtonText = disbaled => {
     : {...defaultStyle, fontWeight: '900'};
 };
 
+const userData = {
+  alignSelf: 'center',
+  fontSize: 20,
+  color: Colors.black,
+};
+
 const splitter = {
   width: '100%',
   display: 'flex',
@@ -104,6 +110,7 @@ const styles = StyleSheet.create({
   footerButtonView,
   footerButtonStyle,
   footerButtonText,
+  userData,
   splitter,
   itemColor,
   itemBackgroundColor,
