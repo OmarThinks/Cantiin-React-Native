@@ -5,8 +5,8 @@ import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
-import AccountIntentLogin from './AccountIntentLogin';
-import AccountIntentLogout from './AccountIntentLogout';
+import AccountIntentLogin from './Account/AccountIntentLogin';
+import AccountIntentLogout from './Account/AccountIntentLogout';
 
 export default function AccountIntent() {
   const initialIntentView = (
