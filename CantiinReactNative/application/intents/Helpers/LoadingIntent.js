@@ -8,18 +8,8 @@ import {AccountContext} from '../../contexts/AccountContext';
 
 export default function LoadingIntent() {
   return (
-    <SafeAreaView
-      style={{...styles.mainAccountContainer, justifyContent: 'center'}}>
-      <Button
-        //onPress={handleLoginPress}
-        style={{...styles.requestButton}}
-        labelStyle={styles.requestButtonLabel}
-        //disabled={loading}
-        //loading={loading}
-        compact={false}
-        contentStyle={styles.requestButtonContent}>
-        Loading
-      </Button>
+    <SafeAreaView style={{...styles.mainContainerCenter}}>
+      <ActivityIndicator size={60} color={Colors.green600} />
     </SafeAreaView>
   );
 }

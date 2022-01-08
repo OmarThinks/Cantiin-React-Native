@@ -7,6 +7,9 @@ const mainAccountContainer = {
   ...mainContainer,
   backgroundColor: Colors.grey400,
 };
+
+const mainContainerCenter = {...mainAccountContainer, justifyContent: 'center'};
+
 const mainFootBar = {
   height: '10%',
   width: '100%',
@@ -93,6 +96,7 @@ const LoadingScreen = {
 
 const styles = StyleSheet.create({
   mainContainer,
+  mainContainerCenter,
   mainAccountContainer,
   mainFootBar,
   mainContent,
