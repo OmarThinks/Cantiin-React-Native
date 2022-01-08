@@ -80,7 +80,8 @@ const stylesHelper = StyleSheet.create({
   },
 });
 
-export default function ProductsListIntent() {
+export default function ProductsListIntent({navigation}) {
+  //console.log("navigation", navigation);
   const [currentPage, setCurrentPage] = useState(1);
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -186,13 +187,13 @@ export default function ProductsListIntent() {
     addProductsFab = (
       <FAB
         style={styles.fab}
-        //small
-        //icon="plus"
-        //icon="plus"
-        // * /
 
+        onPress={() => {
+          navigation.navigate('AddProducts');
+          //console.log("I am pressed");
+        }}
         icon="plus"
-        onPress={() => console.log('Pressed')}
+        //onPress={() => console.log('Pressed')}
         color={Colors.black}
         
         //contentStyle={{backgroundColor:"blue", innerWidth:100, outerWidth:100, color:"white"}}
