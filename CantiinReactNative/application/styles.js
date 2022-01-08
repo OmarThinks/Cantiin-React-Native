@@ -100,6 +100,13 @@ const LoadingScreen = {
   backgroundColor: Colors.green900,
 };
 
+const fab = {
+  position: 'absolute',
+  margin: 16,
+  right: 0,
+  bottom: 0,
+};
+
 const styles = StyleSheet.create({
   mainContainer,
   mainContainerCenter,
@@ -120,6 +127,7 @@ const styles = StyleSheet.create({
   requestButtonContent,
   requestButtonLabel,
   LoadingScreen,
+  fab,
 });
 
 export default styles;

@@ -1,5 +1,5 @@
 import {SafeAreaView, Text, View, FlatList, StyleSheet} from 'react-native';
-import {useState, useEffect, Fragment} from 'react';
+import {useState, useEffect, Fragment, useContext} from 'react';
 import React from 'react';
 import styles from '../styles';
 import {
@@ -10,7 +10,10 @@ import {
   Paragraph,
   TouchableRipple,
   Button,
+  FAB,
 } from 'react-native-paper';
+//import {AccountContext} from '../../contexts/AccountContext';
+import {AccountContext} from '../contexts/AccountContext';
 
 const axios = require('axios');
 
@@ -80,6 +83,7 @@ export default function ProductsListIntent() {
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
   const [requestError, setRequestError] = useState(false);
+  const {accountData} = useContext(AccountContext);
 
   const loadPage = () => {
     setLoading(true);
@@ -151,6 +155,20 @@ export default function ProductsListIntent() {
     );
   }
 
+  let addProductsFab = <Fragment />;
+
+  //console.log("ProductsListToken",accountData.token);
+
+  if (accountData.token) {
+    addProductsFab = (
+      <FAB
+        style={styles.fab}
+        small
+        icon="plus"
+        onPress={() => console.log('Pressed')}
+      />
+    );
+  }
   return (
     <SafeAreaView>
       <View style={{...styles.mainContainer}}>
@@ -163,6 +181,8 @@ export default function ProductsListIntent() {
               onRefresh={loadPage}
               refreshing={loading}
             />
+                      {addProductsFab}
+
           </SafeAreaView>
         </View>
         <View
