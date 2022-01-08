@@ -10,13 +10,15 @@ import AccountIntentLogout from './Account/AccountIntentLogout';
 import LoadingIntent from './Helpers/LoadingIntent';
 
 export default function AccountIntent() {
-  const initialIntentView = (
-    <SafeAreaView style={{...styles.LoadingScreen}}>
-      <ActivityIndicator animating={true} color={Colors.red800} />
-    </SafeAreaView>
-  );
+  const [loading, setLoading] = useState(true);
+
+  let toReturnAccountIntent = <Fragment />;
+
+  if (loading) {
+    return <LoadingIntent />;
+  }
 
   //return <AccountIntentLogin />;
   //return <AccountIntentLogout />;
-  return <LoadingIntent />;
+  return <AccountIntentLogout />;
 }
