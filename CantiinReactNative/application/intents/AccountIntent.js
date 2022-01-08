@@ -10,15 +10,16 @@ import AccountIntentLogout from './Account/AccountIntentLogout';
 import LoadingIntent from './Helpers/LoadingIntent';
 
 export default function AccountIntent() {
-  const [loading, setLoading] = useState(true);
+  const {accountData, refreshAccountData} = useContext(AccountContext);
+  const token = accountData.token;
+  const userData = accountData.userData;
 
-  let toReturnAccountIntent = <Fragment />;
-
-  if (loading) {
-    return <LoadingIntent />;
+  if (token) {
+    if (userData == null) {
+      refreshAccountData();
+    }
+    return <AccountIntentLogout />;
+  } else {
+    return <AccountIntentLogin />;
   }
-
-  //return <AccountIntentLogin />;
-  //return <AccountIntentLogout />;
-  return <AccountIntentLogout />;
 }
