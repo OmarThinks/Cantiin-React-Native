@@ -7,6 +7,7 @@ import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 import AccountIntentLogin from './Account/AccountIntentLogin';
 import AccountIntentLogout from './Account/AccountIntentLogout';
+import LoadingIntent from './Helpers/LoadingIntent';
 
 export default function AccountIntent() {
   const initialIntentView = (
@@ -16,5 +17,6 @@ export default function AccountIntent() {
   );
 
   //return <AccountIntentLogin />;
-  return <AccountIntentLogout />;
+  //return <AccountIntentLogout />;
+  return <LoadingIntent />;
 }
