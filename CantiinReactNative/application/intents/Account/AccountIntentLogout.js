@@ -4,6 +4,9 @@ import {SafeAreaView} from 'react-native';
 import styles from '../../styles';
 import {AccountContext} from '../../contexts/AccountContext';
 import sendData from '../../helpers/sendData';
+const axios = require('axios');
+
+
 
 export default function AccountIntentLogout() {
   const [loading, setLoading] = useState(false);
@@ -24,8 +27,15 @@ export default function AccountIntentLogout() {
   const handleLogoutPress = () => {
     setLoading(true);
     setFailText('');
-    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/')
-      .then(data => {
+    
+        //sendData('POST', 'https://cantiin.com/api/auth/custom/logout/')
+
+    axios({
+      method: 'post',
+      url: `https://cantiin.com/api/auth/custom/logout/`,
+      timeout: 1000 * 3, // Wait for n seconds
+    }) 
+    .then(data => {
         logoutAccount();
       })
       .catch(() => {
