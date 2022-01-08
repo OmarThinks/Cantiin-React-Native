@@ -104,6 +104,27 @@ const AccountContextProvider = props => {
     });*/
   };
 
+
+
+  const handleLogoutPress = () => {
+    setLoading(true);
+    setFailText('');
+    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/')
+      .then(data => {
+
+      })
+      .catch(() => {
+        //console.log('failed');
+        setLoginFailedText(
+          'Something went wrong, Try again later, maybe you are not connected to the internet',
+        );
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+
   const parsedContext = {
     accountData,
     setAccountToken,
