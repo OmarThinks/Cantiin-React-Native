@@ -29,7 +29,7 @@ export default function AccountIntentLogout() {
         logoutAccount();
       })
       .catch(() => {
-        //console.log('failed');
+        console.log('logout failed');
         setFailText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
         );
