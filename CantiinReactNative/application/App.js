@@ -85,6 +85,18 @@ const App = () => {
                 },
               }}
             />
+            <Stack.Screen
+              name="AddProducts"
+              component={AccountIntent}
+              options={{
+                header: ({navigation, route, options, back}) => {
+                  const title = 'Add Products';
+                  return <CustomHeader title={title} back={navigation} />;
+                },
+              }}
+            />
+
+
           </Stack.Navigator>
         </AccountContextProvider>
       </PaperProvider>

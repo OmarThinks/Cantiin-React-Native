@@ -11,6 +11,8 @@ import {
   TouchableRipple,
   Button,
   FAB,
+  Icon,
+  Image,
 } from 'react-native-paper';
 //import {AccountContext} from '../../contexts/AccountContext';
 import {AccountContext} from '../contexts/AccountContext';
@@ -159,13 +161,42 @@ export default function ProductsListIntent() {
 
   //console.log("ProductsListToken",accountData.token);
 
+  /*
+      <FAB
+        style={styles.fab}
+        //small
+        //icon="plus"
+        //icon="plus"
+        /*icon={() => {
+          return <Icon name="warning" size={24} color="#fff" />;
+        }}
+
+        // * /
+
+        icon={{image: 'plus'}}
+        onPress={() => console.log('Pressed')}
+        color={Colors.black}
+        //contentStyle={{backgroundColor:"blue", innerWidth:100, outerWidth:100, color:"white"}}
+        a
+      />
+
+*/
+
   if (accountData.token) {
     addProductsFab = (
       <FAB
         style={styles.fab}
-        small
+        //small
+        //icon="plus"
+        //icon="plus"
+        // * /
+
         icon="plus"
         onPress={() => console.log('Pressed')}
+        color={Colors.black}
+        
+        //contentStyle={{backgroundColor:"blue", innerWidth:100, outerWidth:100, color:"white"}}
+        //a
       />
     );
   }
@@ -181,8 +212,7 @@ export default function ProductsListIntent() {
               onRefresh={loadPage}
               refreshing={loading}
             />
-                      {addProductsFab}
-
+            {addProductsFab}
           </SafeAreaView>
         </View>
         <View

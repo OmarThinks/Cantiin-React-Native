@@ -103,8 +103,10 @@ const LoadingScreen = {
 const fab = {
   position: 'absolute',
   margin: 16,
+  marginBottom: 25,
   right: 0,
   bottom: 0,
+  backgroundColor: Colors.green400,
 };
 
 const styles = StyleSheet.create({
