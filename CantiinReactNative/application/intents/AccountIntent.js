@@ -5,16 +5,16 @@ import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
-import UserIntentLogin from './UserIntentLogin';
-import UserIntentLogout from './UserIntentLogout';
+import AccountIntentLogin from './AccountIntentLogin';
+import AccountIntentLogout from './AccountIntentLogout';
 
-export default function UserIntent() {
+export default function AccountIntent() {
   const initialIntentView = (
     <SafeAreaView style={{...styles.LoadingScreen}}>
       <ActivityIndicator animating={true} color={Colors.red800} />
     </SafeAreaView>
   );
 
-  //return <UserIntentLogin />;
-  return <UserIntentLogout />;
+  //return <AccountIntentLogin />;
+  return <AccountIntentLogout />;
 }

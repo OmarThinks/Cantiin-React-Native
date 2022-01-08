@@ -6,7 +6,7 @@ import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 
-export default function UserIntentLogin() {
+export default function AccountIntentLogin() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);

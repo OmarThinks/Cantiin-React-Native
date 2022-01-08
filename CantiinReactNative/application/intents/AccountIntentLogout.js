@@ -6,11 +6,10 @@ import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 
-export default function UserIntentLogout() {
-
+export default function AccountIntentLogout() {
   return (
-    <SafeAreaView style={{...styles.mainAccountContainer, 
-    justifyContent:"center"}}>
+    <SafeAreaView
+      style={{...styles.mainAccountContainer, justifyContent: 'center'}}>
       <Button
         //onPress={handleLoginPress}
         style={{...styles.requestButton}}

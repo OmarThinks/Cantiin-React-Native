@@ -7,7 +7,7 @@
  */
 import React, {Fragment} from 'react';
 import ProductsListIntent from './intents/ProductsListIntent';
-import UserIntent from './intents/UserIntent';
+import AccountIntent from './intents/AccountIntent';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -54,7 +54,7 @@ const App = () => {
               options={{
                 header: ({navigation, route, options, back}) => {
                   const title = 'Products List';
-                  const moveToUserIntent = () => {
+                  const moveToAccountIntent = () => {
                     navigation.navigate('AccountIntent');
                   };
                   return (
@@ -64,7 +64,7 @@ const App = () => {
                       rightContent={
                         <Appbar.Action
                           icon="account"
-                          onPress={moveToUserIntent}
+                          onPress={moveToAccountIntent}
                           color={Colors.white}
                           style={{backgroundColor: Colors.grey800}}
                         />
@@ -77,7 +77,7 @@ const App = () => {
 
             <Stack.Screen
               name="AccountIntent"
-              component={UserIntent}
+              component={AccountIntent}
               options={{
                 header: ({navigation, route, options, back}) => {
                   const title = 'Account';
