@@ -92,7 +92,7 @@ export default function ProductsListIntent({navigation}) {
 
   const loadPage = () => {
     setLoading(true);
-    setResponse({});
+    //setResponse({});
     sendData(
       'GET',
       `https://cantiin.com/api/products/?page=${currentPage.toString()}`,

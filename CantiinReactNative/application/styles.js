@@ -85,6 +85,13 @@ const loginErrortext = {
   padding: 20,
 };
 
+const inputErrortext = {
+  ...loginErrortext,
+  textAlign: 'left',
+  fontSize: 12,
+  padding: 10,,
+};
+
 const requestButton = {
   backgroundColor: Colors.green300,
   width: '50%',
@@ -126,6 +133,7 @@ const styles = StyleSheet.create({
   itemBackgroundColor,
   cardStyle,
   loginErrortext,
+  inputErrortext,
   requestButton,
   requestButtonContent,
   requestButtonLabel,
