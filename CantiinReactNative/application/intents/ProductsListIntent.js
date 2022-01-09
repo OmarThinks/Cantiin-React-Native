@@ -17,6 +17,7 @@ import {
 //import {AccountContext} from '../../contexts/AccountContext';
 import {AccountContext} from '../contexts/AccountContext';
 import ErrorText from '../Components/ErrorText';
+import sendData from '../helpers/sendData';
 
 const axios = require('axios');
 
@@ -91,16 +92,20 @@ export default function ProductsListIntent({navigation}) {
 
   const loadPage = () => {
     setLoading(true);
-    //setResponse({});
-    axios({
-      method: 'get',
-      url: `https://cantiin.com/api/products/?page=${currentPage.toString()}`,
-      timeout: 1000 * 5, // Wait for n seconds
-    })
+    setResponse({});
+    sendData(
+      'GET',
+      `https://cantiin.com/api/products/?page=${currentPage.toString()}`,
+    )
+      .then(data => {
+        console.log(data);
+        return data.json();
+      })
       .then(function (responseOfRequest) {
+        console.log(responseOfRequest);
         setLoading(false);
         setRequestError(false);
-        setResponse(responseOfRequest.data);
+        setResponse(responseOfRequest);
         //console.log(responseOfRequest.data);
       })
       .catch(() => {
@@ -140,7 +145,7 @@ export default function ProductsListIntent({navigation}) {
   if (requestError) {
     return (
       <SafeAreaView>
-        <ErrorText error={"Something went wrong, try again later!"} />
+        <ErrorText error={'Something went wrong, try again later!'} />
         <Button
           onPress={() => {
             setLoading(true);
@@ -186,7 +191,6 @@ export default function ProductsListIntent({navigation}) {
     addProductsFab = (
       <FAB
         style={styles.fab}
-
         onPress={() => {
           navigation.navigate('AddProducts');
           //console.log("I am pressed");
@@ -194,7 +198,7 @@ export default function ProductsListIntent({navigation}) {
         icon="plus"
         //onPress={() => console.log('Pressed')}
         color={Colors.black}
-        
+
         //contentStyle={{backgroundColor:"blue", innerWidth:100, outerWidth:100, color:"white"}}
         //a
       />
