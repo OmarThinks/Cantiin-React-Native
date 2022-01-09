@@ -5,9 +5,8 @@ import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
-import AccountIntentLogin from './Account/AccountIntentLogin';
-import AccountIntentLogout from './Account/AccountIntentLogout';
-import LoadingIntent from './Helpers/LoadingIntent';
+import AccountLoginIntent from './Account/AccountLoginIntent';
+import AccountLogoutIntent from './Account/AccountLogoutIntent';
 
 export default function AccountIntent() {
   const {accountData, refreshAccountData} = useContext(AccountContext);
@@ -15,11 +14,11 @@ export default function AccountIntent() {
   const userData = accountData.userData;
   console.log(accountData);
   if (token == null) {
-    return <AccountIntentLogin />;
+    return <AccountLoginIntent />;
   }
   if (userData == null) {
     refreshAccountData(token);
-    return <AccountIntentLogin />;
+    return <AccountLoginIntent />;
   }
-  return <AccountIntentLogout />;
+  return <AccountLogoutIntent />;
 }

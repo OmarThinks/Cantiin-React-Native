@@ -1,12 +1,12 @@
 import React, {useState, Fragment, useContext, useEffect} from 'react';
 import {Text, Button, ActivityIndicator, Colors} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
-import CustomInputField from '../Components/CustomInputField';
-import sendData from '../helpers/sendData';
-import styles from '../styles';
-import {AccountContext} from '../contexts/AccountContext';
+import CustomInputField from '../../Components/CustomInputField';
+import sendData from '../../helpers/sendData';
+import styles from '../../styles';
+import {AccountContext} from '../../contexts/AccountContext';
 
-export default function AddProducts() {
+export default function AccountLoginIntent() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);

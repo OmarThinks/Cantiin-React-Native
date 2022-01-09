@@ -8,7 +8,7 @@
 import React, {Fragment} from 'react';
 import ProductsListIntent from './intents/ProductsListIntent';
 import AccountIntent from './intents/AccountIntent';
-import AddProducts from './intents/AddProducts';
+import AddProductsIntent from './intents/AddProductsIntent';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -88,7 +88,7 @@ const App = () => {
             />
             <Stack.Screen
               name="AddProducts"
-              component={AddProducts}
+              component={AddProductsIntent}
               options={{
                 header: ({navigation, route, options, back}) => {
                   const title = 'Add Products';
@@ -96,8 +96,6 @@ const App = () => {
                 },
               }}
             />
-
-
           </Stack.Navigator>
         </AccountContextProvider>
       </PaperProvider>

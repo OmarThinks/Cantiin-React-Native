@@ -6,7 +6,7 @@ import {AccountContext} from '../../contexts/AccountContext';
 import sendData from '../../helpers/sendData';
 import fetchWithTimeout from '../../helpers/fetchWithTimeout';
 
-export default function AccountIntentLogout() {
+export default function AccountLogoutIntent() {
   const [loading, setLoading] = useState(false);
   const [failText, setFailText] = useState('');
 
