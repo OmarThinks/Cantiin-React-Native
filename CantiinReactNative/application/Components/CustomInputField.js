@@ -31,7 +31,7 @@ const CustomInputField = ({
         error={error}
         //dense={true}
       />
-      <ErrorText error={error} input={true}/>
+      <ErrorText error={error} input={true} />
     </View>
   );
 };

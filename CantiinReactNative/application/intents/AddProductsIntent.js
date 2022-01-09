@@ -16,7 +16,7 @@ export default function AddProductsIntent() {
   const [failureText, setFailureText] = useState('');
 
   // Fields errors
-  const [errors, setErrors] = React.useState({name: '', price: ''});
+  const [errors, setErrors] = React.useState({name: 'hi', price: 'Too Expensive'});
   const resetErrors = () => {
     setErrors({name: '', price: ''});
     setFailureText('');
