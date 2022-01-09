@@ -82,6 +82,7 @@ const loginErrortext = {
   textAlign: 'center',
   color: Colors.red800,
   fontSize: 25,
+  padding: 20,
 };
 
 const requestButton = {

@@ -16,6 +16,7 @@ import {
 } from 'react-native-paper';
 //import {AccountContext} from '../../contexts/AccountContext';
 import {AccountContext} from '../contexts/AccountContext';
+import ErrorText from '../Components/ErrorText';
 
 const axios = require('axios');
 
@@ -139,9 +140,7 @@ export default function ProductsListIntent({navigation}) {
   if (requestError) {
     return (
       <SafeAreaView>
-        <Title style={{padding: 20}}>
-          Something went wrong, try again later!
-        </Title>
+        <ErrorText error={"Something went wrong, try again later!"} />
         <Button
           onPress={() => {
             setLoading(true);

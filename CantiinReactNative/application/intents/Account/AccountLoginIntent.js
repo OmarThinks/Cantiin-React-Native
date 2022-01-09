@@ -19,12 +19,6 @@ export default function AccountLoginIntent() {
   //useEffect(() => logoutAccount(), data.token);
   console.log('accountData', accountData);
 
-  const errorTextFragment = failureText ? (
-    <Text style={styles.loginErrortext}>{failureText}</Text>
-  ) : (
-    <Fragment />
-  );
-
   const handleLoginPress = () => {
     setLoading(true);
     setFailureText('');
