@@ -9,6 +9,7 @@ import {AccountContext} from '../contexts/AccountContext';
 export default function AddProductsIntent() {
   const [productName, setProductName] = React.useState('');
   const [productPrice, setProductPrice] = React.useState('');
+  const [productInStock, setProductInStock] = React.useState(true);
   const [loading, setLoading] = useState(false);
   const [failureText, setFailureText] = useState('');
 
@@ -64,13 +65,12 @@ export default function AddProductsIntent() {
         label="Price"
         value={productPrice}
         setText={text => setProductPrice(text)}
-        secureTextEntry={true}
+        keyboardType="numeric"
       />
       <CustomInputField
         label="In Stock"
-        value={productPrice}
-        setText={text => setProductPrice(text)}
-        secureTextEntry={true}
+        value={productInStock}
+        setText={text => setProductInStock(text)}
       />
 
       {errorTextFragment}
