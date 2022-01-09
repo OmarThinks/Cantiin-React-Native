@@ -11,6 +11,7 @@ export default function AccountLogoutIntent() {
   const [failText, setFailText] = useState('');
 
   const {accountData, logoutAccount} = useContext(AccountContext);
+  const token = accountData.token;
   const displayedUsernameText = `Your Username: ${accountData.userData.username}`;
   let additionalContent = <Fragment />;
   if (accountData.userData != null) {
@@ -32,7 +33,9 @@ export default function AccountLogoutIntent() {
       timeout: 1000 * 3, // Wait for n seconds
     })*/
 
-    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/')
+    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/',null, {
+      cookie: `sessionid=${token}`,
+    })
       .then(data => {
         logoutAccount();
       })
