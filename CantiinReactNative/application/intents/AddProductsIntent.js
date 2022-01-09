@@ -1,12 +1,6 @@
 import React, {useState, Fragment, useContext, useEffect} from 'react';
-import {
-  Text,
-  Button,
-  ActivityIndicator,
-  Colors,
-  Checkbox,
-} from 'react-native-paper';
-import {SafeAreaView} from 'react-native';
+import {Text, Button, Colors, Checkbox} from 'react-native-paper';
+import {SafeAreaView, View} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
@@ -29,7 +23,7 @@ export default function AddProductsIntent() {
   ) : (
     <Fragment />
   );
-
+  console.log('ajhjhasdgjh');
   const handleAddProductPress = () => {
     setLoading(true);
     setFailureText('');
@@ -46,7 +40,10 @@ export default function AddProductsIntent() {
       },
     )
       .then(data => {
-        if (data.status !== 200) {} else {})
+        if (data.status !== 200) {
+        } else {
+        }
+      })
       .catch(() => {
         setFailureText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
@@ -70,12 +67,22 @@ export default function AddProductsIntent() {
         setText={text => setProductPrice(text)}
         keyboardType="numeric"
       />
-      <Text>In Stock</Text>
-      <Checkbox
+      <Checkbox.Item
+        label="In Stock"
         status={productInStock ? 'checked' : 'unchecked'}
+        position="leading"
+        color={Colors.green700}
         onPress={() => {
           setProductInStock(!productInStock);
         }}
+        labelStyle={{
+          fontSize: 20,
+          marginLeft: 0,
+          marginRight: 'auto',
+          paddingLeft: 0,
+          paddingRight: 'auto',
+        }}
+        style={{display: 'flex', flexDirection: 'row'}}
       />
 
       {errorTextFragment}
