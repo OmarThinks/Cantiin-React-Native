@@ -5,6 +5,7 @@ import styles from '../../styles';
 import {AccountContext} from '../../contexts/AccountContext';
 import sendData from '../../helpers/sendData';
 import fetchWithTimeout from '../../helpers/fetchWithTimeout';
+import ErrorText from '../../Components/ErrorText';
 
 export default function AccountLogoutIntent() {
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,7 @@ export default function AccountLogoutIntent() {
         contentStyle={styles.requestButtonContent}>
         Log Out
       </Button>
-      <Text style={styles.loginErrortext}>{failText}</Text>
+      <ErrorText error={failText} />
     </SafeAreaView>
   );
 }
