@@ -18,7 +18,7 @@ export default function AddProductsIntent({navigation}) {
 
   // Fields errors
   const [errors, setErrors] = React.useState({name: [''], price: ['']});
-  console.log("errors", errors);
+  console.log('errors', errors);
   const resetErrors = () => {
     setErrors({name: [''], price: ['']});
     setFailureText('');
@@ -56,7 +56,7 @@ export default function AddProductsIntent({navigation}) {
     )
       .then(data => {
         console.log(data);
-        if (data.status === 200) {
+        if (data.status == 201) {
           navigation.pop();
         } else {
           data.json().then(responseJson => {
