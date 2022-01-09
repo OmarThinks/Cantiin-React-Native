@@ -6,8 +6,9 @@ import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 // productName, productPrice, productInStock
-export default function AddProductsIntent() {
+export default function AddProductsIntent({navigation}) {
   // Input Fields
+  console.log(navigation);
   const [productName, setProductName] = React.useState('');
   const [productPrice, setProductPrice] = React.useState('');
   const [productInStock, setProductInStock] = React.useState(true);
@@ -16,9 +17,15 @@ export default function AddProductsIntent() {
   const [failureText, setFailureText] = useState('');
 
   // Fields errors
-  const [errors, setErrors] = React.useState({name: 'hi', price: 'Too Expensive'});
+  const [errors, setErrors] = React.useState({name: [''], price: ['']});
+  console.log("errors", errors);
   const resetErrors = () => {
-    setErrors({name: '', price: ''});
+    setErrors({name: [''], price: ['']});
+    setFailureText('');
+  };
+
+  const clearFieldError = fieldname => {
+    setErrors({...errors, [fieldname]: ['']});
     setFailureText('');
   };
 
@@ -48,11 +55,17 @@ export default function AddProductsIntent() {
       },
     )
       .then(data => {
-        if (data.status !== 200) {
+        console.log(data);
+        if (data.status === 200) {
+          navigation.pop();
         } else {
+          data.json().then(responseJson => {
+            console.log(setErrors({...errors, ...responseJson}));
+          });
         }
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         setFailureText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
         );
@@ -67,15 +80,21 @@ export default function AddProductsIntent() {
       <CustomInputField
         label="Name"
         value={productName}
-        setText={text => setProductName(text)}
-        error={errors.name}
+        setText={text => {
+          clearFieldError('name');
+          setProductName(text);
+        }}
+        error={errors.name[0]}
       />
       <CustomInputField
         label="Price"
         value={productPrice}
-        setText={text => setProductPrice(text)}
+        setText={text => {
+          clearFieldError('price');
+          setProductPrice(text);
+        }}
         keyboardType="numeric"
-        error={errors.price}
+        error={errors.price[0]}
       />
       <Checkbox.Item
         label="In Stock"
