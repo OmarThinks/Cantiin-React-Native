@@ -33,7 +33,7 @@ export default function AccountLogoutIntent() {
       timeout: 1000 * 3, // Wait for n seconds
     })*/
 
-    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/',null, {
+    sendData('POST', 'https://cantiin.com/api/auth/custom/logout/', null, {
       cookie: `sessionid=${token}`,
     })
       .then(data => {
