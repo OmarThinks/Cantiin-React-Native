@@ -5,12 +5,13 @@ import CustomInputField from '../../Components/CustomInputField';
 import sendData from '../../helpers/sendData';
 import styles from '../../styles';
 import {AccountContext} from '../../contexts/AccountContext';
+import ErrorText from '../../Components/ErrorText';
 
 export default function AccountLoginIntent() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = useState(false);
-  const [loginFailedText, setLoginFailedText] = useState('');
+  const [failureText, setFailureText] = useState('');
 
   const {accountData, setAccountToken, logoutAccount} =
     useContext(AccountContext);
@@ -18,15 +19,15 @@ export default function AccountLoginIntent() {
   //useEffect(() => logoutAccount(), data.token);
   console.log('accountData', accountData);
 
-  const errorTextFragment = loginFailedText ? (
-    <Text style={styles.loginErrortext}>{loginFailedText}</Text>
+  const errorTextFragment = failureText ? (
+    <Text style={styles.loginErrortext}>{failureText}</Text>
   ) : (
     <Fragment />
   );
 
   const handleLoginPress = () => {
     setLoading(true);
-    setLoginFailedText('');
+    setFailureText('');
     //console.log({username, password});
     sendData('POST', 'https://cantiin.com/api/auth/custom/login/', {
       username,
@@ -36,7 +37,7 @@ export default function AccountLoginIntent() {
         //console.log(data); // JSON data parsed by `data.json()` call
         //console.log(data.status);
         if (data.status !== 200) {
-          setLoginFailedText('Wrong Username or Password');
+          setFailureText('Wrong Username or Password');
         } else {
           const cookieData = {};
           //console.log(data.headers.map['set-cookie']);
@@ -56,7 +57,7 @@ export default function AccountLoginIntent() {
       })
       .catch(() => {
         //console.log('failed');
-        setLoginFailedText(
+        setFailureText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
         );
       })
@@ -79,7 +80,7 @@ export default function AccountLoginIntent() {
         secureTextEntry={true}
       />
 
-      {errorTextFragment}
+      <ErrorText error={failureText}/>
       <Button
         onPress={handleLoginPress}
         style={styles.requestButton}
