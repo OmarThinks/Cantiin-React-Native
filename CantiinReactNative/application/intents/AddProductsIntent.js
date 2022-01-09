@@ -7,12 +7,20 @@ import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
 // productName, productPrice, productInStock
 export default function AddProductsIntent() {
+  // Input Fields
   const [productName, setProductName] = React.useState('');
   const [productPrice, setProductPrice] = React.useState('');
   const [productInStock, setProductInStock] = React.useState(true);
 
   const [loading, setLoading] = useState(false);
   const [failureText, setFailureText] = useState('');
+
+  // Fields errors
+  const [errors, setErrors] = React.useState({name: '', price: ''});
+  const resetErrors = () => {
+    setErrors({});
+    setFailureText('');
+  };
 
   const {accountData} = useContext(AccountContext);
   const token = accountData.token;
@@ -26,7 +34,7 @@ export default function AddProductsIntent() {
   console.log('ajhjhasdgjh');
   const handleAddProductPress = () => {
     setLoading(true);
-    setFailureText('');
+    resetErrors();
     sendData(
       'POST',
       'https://cantiin.com/api/products/',
@@ -60,12 +68,14 @@ export default function AddProductsIntent() {
         label="Name"
         value={productName}
         setText={text => setProductName(text)}
+        error={errors.name}
       />
       <CustomInputField
         label="Price"
         value={productPrice}
         setText={text => setProductPrice(text)}
         keyboardType="numeric"
+        error={errors.price}
       />
       <Checkbox.Item
         label="In Stock"

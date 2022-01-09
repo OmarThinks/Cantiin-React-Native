@@ -13,6 +13,7 @@ const CustomInputField = ({
   fontSize=20,
   setText,
   keyboardType="default",
+  error=false
 } = {}) => {
   return (
     <View style={{margin: 10}}>
@@ -26,6 +27,7 @@ const CustomInputField = ({
         placeholderTextColor={placeholderTextColor}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
+        error={""}
         //dense={true}
       />
     </View>
