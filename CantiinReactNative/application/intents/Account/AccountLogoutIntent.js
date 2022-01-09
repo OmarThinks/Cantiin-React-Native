@@ -38,7 +38,9 @@ export default function AccountLogoutIntent() {
       cookie: `sessionid=${token}`,
     })
       .then(data => {
+        console.log(data);
         logoutAccount();
+        data.json().then((dataJson)=>{console.log("Handle Logout Press",dataJson);})
       })
       .catch(() => {
         console.log('logout failed');

@@ -13,10 +13,8 @@ export default function AccountLoginIntent() {
   const [loading, setLoading] = useState(false);
   const [failureText, setFailureText] = useState('');
 
-  const {accountData, setAccountToken, logoutAccount} =
+  const {accountData, setAccountToken} =
     useContext(AccountContext);
-  //logoutAccount();
-  //useEffect(() => logoutAccount(), data.token);
   console.log('accountData', accountData);
 
   const handleLoginPress = () => {

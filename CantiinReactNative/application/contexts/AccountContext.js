@@ -18,18 +18,19 @@ logout
 */
 
 const AccountContextProvider = props => {
-  const [accountData, setAccountData] = useState({
+  const [accountState, setAccountState] = useState({
     userData: null,
     token: null,
     initialized: false,
   });
 
   useEffect(() => {
-    if (accountData.initialized === false) {
+    if (accountState.initialized === false) {
       (async () => {
         const token = await getToken();
         const userData = await getUserData();
-        setAccountData({
+        console.log("Stored data", token, userData);
+        setAccountState({
           userData,
           token,
           initialized: true,
@@ -38,12 +39,14 @@ const AccountContextProvider = props => {
     }
   });
 
+
+  
   useEffect(() => {
-    if (accountData.initialized === true) {
-      storeToken(accountData.token);
-      storeUserdata(accountData.userData);
+    if (accountState.initialized === true) {
+      storeToken(accountState.token);
+      storeUserdata(accountState.userData);
     }
-  }, [accountData]);
+  }, [accountState]);
 
   /*
   useEffect(() => {
@@ -76,11 +79,11 @@ const AccountContextProvider = props => {
   //console.log(accountData);
 
   const refreshAccountData = (inputToken = null) => {
-    const token = accountData.token || inputToken;
+    const token = accountState.token || inputToken;
     //console.log('token is', token);
     if (!token) {
       //console.log('I found that token is null', accountData, token);
-      setAccountData({...accountData, userData: null, token: null});
+      setAccountState({...accountState, userData: null, token: null});
       return;
     }
 
@@ -90,10 +93,15 @@ const AccountContextProvider = props => {
       cookie: `sessionid=${token}`,
     })
       .then(res => {
-        //console.log(res);
+        console.log("refresh response", res);
+        if(res.status === 401){
+          setAccountState({...accountState, token: null, userData: null});
+          return;
+        }
+
         res.json().then(resJSON => {
-          //console.log(resJSON);
-          setAccountData({...accountData, userData: resJSON, token: token});
+          console.log("refresh", resJSON);
+          setAccountState({...accountState, userData: resJSON, token: token});
         });
       })
       .catch(err => {
@@ -107,11 +115,13 @@ const AccountContextProvider = props => {
   };
 
   const logoutAccount = () => {
-    setAccountData({...accountData, userData: null, token: null});
+    setAccountState({...accountState, userData: null, token: null});
+    //storeToken(null);
+    //storeUserdata(null);
   };
 
   const parsedContext = {
-    accountData,
+    accountData: accountState,
     setAccountToken,
     refreshAccountData,
     logoutAccount,

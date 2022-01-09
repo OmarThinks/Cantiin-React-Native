@@ -17,7 +17,7 @@ export default function AccountIntent() {
     return <AccountLoginIntent />;
   }
   if (userData == null) {
-    refreshAccountData(token);
+    refreshAccountData();
     return <AccountLoginIntent />;
   }
   return <AccountLogoutIntent />;
