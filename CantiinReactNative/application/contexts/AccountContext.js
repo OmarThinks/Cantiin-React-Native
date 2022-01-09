@@ -40,6 +40,14 @@ const AccountContextProvider = props => {
 
   useEffect(() => {
     if (accountData.initialized === true) {
+      storeToken(accountData.token);
+      storeUserdata(accountData.userData);
+    }
+  }, [accountData]);
+
+  /*
+  useEffect(() => {
+    if (accountData.initialized === true) {
       (async () => {
         //const token = await getToken();
 
@@ -52,6 +60,8 @@ const AccountContextProvider = props => {
       })();
     }
   }, [accountData]);
+
+*/
 
   /*(async () => {
     //const storedToken = await getToken();
