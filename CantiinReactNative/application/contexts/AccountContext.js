@@ -41,26 +41,26 @@ const AccountContextProvider = props => {
   useEffect(() => {
     if (accountData.initialized === true) {
       (async () => {
-        const token = await getToken();
+        //const token = await getToken();
 
         //if (token) {
         //  return;
         //} // The user is already logged in, but
-        const userData = await getUserData();
+        //const userData = await getUserData();
         storeToken(accountData.token);
         storeUserdata(accountData.userData);
       })();
     }
   }, [accountData]);
 
-  (async () => {
+  /*(async () => {
     //const storedToken = await getToken();
     //const storedUserData = await getUserData();
     //console.log('stored Token is');
     //console.log(storedToken);
     //console.log('stored UserData is');
     //console.log(storedUserData);
-  })();
+  })();*/
 
   //console.log('current Account state is');
   //console.log(accountData);

@@ -18,7 +18,8 @@ export default function AccountIntent() {
     return <AccountIntentLogin />;
   }
   if (userData == null) {
-    refreshAccountData();
+    refreshAccountData(token);
+    return <AccountIntentLogin />;
   }
   return <AccountIntentLogout />;
 }
