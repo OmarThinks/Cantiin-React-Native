@@ -11,13 +11,18 @@ import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
 import styles from '../styles';
 import {AccountContext} from '../contexts/AccountContext';
-// productName, Price, InStock
+// productName, productPrice, productInStock
 export default function AddProductsIntent() {
   const [productName, setProductName] = React.useState('');
   const [productPrice, setProductPrice] = React.useState('');
   const [productInStock, setProductInStock] = React.useState(true);
+
   const [loading, setLoading] = useState(false);
   const [failureText, setFailureText] = useState('');
+
+  const {accountData} = useContext(AccountContext);
+  const token = accountData.token;
+  //console.log(token);
 
   const errorTextFragment = failureText ? (
     <Text style={styles.loginErrortext}>{failureText}</Text>
@@ -28,9 +33,10 @@ export default function AddProductsIntent() {
   const handleAddProductPress = () => {
     setLoading(true);
     setFailureText('');
-    sendData('POST', 'https://cantiin.com/api/auth/custom/login/', {
-      username: productName,
-      password: productPrice,
+    sendData('POST', 'https://cantiin.com/api/products/', {
+      name: productName,
+      price: productPrice,
+      in_stock: productInStock,
     })
       .then(data => {
         if (data.status !== 200) {
@@ -71,7 +77,8 @@ export default function AddProductsIntent() {
         setText={text => setProductPrice(text)}
         keyboardType="numeric"
       />
-      <Text>In Stock</Text><Checkbox
+      <Text>In Stock</Text>
+      <Checkbox
         status={productInStock ? 'checked' : 'unchecked'}
         onPress={() => {
           setProductInStock(!productInStock);
