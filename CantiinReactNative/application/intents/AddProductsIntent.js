@@ -1,5 +1,11 @@
 import React, {useState, Fragment, useContext, useEffect} from 'react';
-import {Text, Button, ActivityIndicator, Colors} from 'react-native-paper';
+import {
+  Text,
+  Button,
+  ActivityIndicator,
+  Colors,
+  Checkbox,
+} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
 import CustomInputField from '../Components/CustomInputField';
 import sendData from '../helpers/sendData';
@@ -12,8 +18,6 @@ export default function AddProductsIntent() {
   const [productInStock, setProductInStock] = React.useState(true);
   const [loading, setLoading] = useState(false);
   const [failureText, setFailureText] = useState('');
-
-
 
   const errorTextFragment = failureText ? (
     <Text style={styles.loginErrortext}>{failureText}</Text>
@@ -67,10 +71,11 @@ export default function AddProductsIntent() {
         setText={text => setProductPrice(text)}
         keyboardType="numeric"
       />
-      <CustomInputField
-        label="In Stock"
-        value={productInStock}
-        setText={text => setProductInStock(text)}
+      <Text>In Stock</Text><Checkbox
+        status={productInStock ? 'checked' : 'unchecked'}
+        onPress={() => {
+          setProductInStock(!productInStock);
+        }}
       />
 
       {errorTextFragment}
