@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import {Colors, TextInput} from 'react-native-paper';
 import {View} from 'react-native';
+import ErrorText from './ErrorText';
 
 const CustomInputField = ({
   label,
@@ -10,10 +11,10 @@ const CustomInputField = ({
   additionalStyle = {},
   placeholderTextColor = Colors.black,
   secureTextEntry = false,
-  fontSize=20,
+  fontSize = 20,
   setText,
-  keyboardType="default",
-  error=false
+  keyboardType = 'default',
+  error = '',
 } = {}) => {
   return (
     <View style={{margin: 10}}>
@@ -27,9 +28,10 @@ const CustomInputField = ({
         placeholderTextColor={placeholderTextColor}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
-        error={""}
+        error={error}
         //dense={true}
       />
+      <ErrorText error={error} input={true}/>
     </View>
   );
 };

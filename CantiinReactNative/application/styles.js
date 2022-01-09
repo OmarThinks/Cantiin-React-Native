@@ -89,7 +89,7 @@ const inputErrortext = {
   ...loginErrortext,
   textAlign: 'left',
   fontSize: 12,
-  padding: 10,,
+  padding: 10,
 };
 
 const requestButton = {
