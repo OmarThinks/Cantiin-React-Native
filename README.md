@@ -65,3 +65,12 @@ I got it from https://www.flaticon.com/premium-icon/shop_2981297
 
 
 <img src="Logo/shop.png" width=100 height=100>
+
+
+
+
+## 2) Application Icons:
+
+The application icons were genrated on:
+https://appicon.co/ 
+
