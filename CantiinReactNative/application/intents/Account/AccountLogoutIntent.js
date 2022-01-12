@@ -40,17 +40,15 @@ export default function AccountLogoutIntent() {
       .then(data => {
         //console.log(data);
         logoutAccount();
-        data.json().then((dataJson)=>{
+        data.json().then(dataJson => {
           //console.log("Handle Logout Press",dataJson);
-      })
+        });
       })
       .catch(() => {
         //console.log('logout failed');
         setFailText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
         );
-      })
-      .finally(() => {
         setLoading(false);
       });
   };
