@@ -1,4 +1,4 @@
-import React, {useState, Fragment, useContext, useEffect} from 'react';
+import React, {useState, Fragment, useContext} from 'react';
 import {Text, Button, ActivityIndicator, Colors} from 'react-native-paper';
 import {SafeAreaView} from 'react-native';
 import CustomInputField from '../../Components/CustomInputField';

@@ -24,10 +24,9 @@ const AccountContextProvider = props => {
     initialized: false,
   });
 
-
-  console.log("Current Account State --------------------");
+  console.log('Current Account State --------------------');
   console.log(accountState);
-  useEffect(() => {
+  /*useEffect(() => {
     if (accountState.initialized === false) {
       (async () => {
         console.log('EFFECT: setting account state -------------------');
@@ -41,8 +40,8 @@ const AccountContextProvider = props => {
         });
       })();
     }
-  });
-
+  });*/
+/*
   useEffect(() => {
     if (accountState.initialized === true) {
       console.log('EFFECT: Storing Account Data and Token--------------------');
@@ -52,7 +51,54 @@ const AccountContextProvider = props => {
       console.log(accountState.token, accountState.userData);
     }
   }, [accountState]);
+*/
 
+  if (accountState.initialized === false) {
+    (async () => {
+      console.log('EFFECT: setting account state -------------------');
+      const token = await getToken();
+      const userData = await getUserData();
+      console.log('Stored data', token, userData);
+      setAccountState({
+        userData,
+        token,
+        initialized: true,
+      });
+    })();
+  } else {
+    //It is initialized
+    
+    
+    (async () => {
+      console.log('EFFECT: setting account state -------------------');
+      const token = await getToken();
+      const userData = await getUserData();
+      console.log('Stored data', token, userData);
+
+      const difference = {};
+      if (token !== accountState.token) {
+        storeToken(accountState.token);
+      }
+      if (userData !== accountState.userData) {
+        storeUserdata(accountState.userData);
+      }
+      
+      
+      /*if (Object.keys(difference).length !== 0) {
+        setAccountState({
+          ...accountState,
+          ...difference,
+        });
+      }*/
+    })();
+  }
+/*
+  const kjahdskjh = {'hi': 'hi'};
+  console.log('Measure');
+  console.log(kjahdskjh === {});
+  console.log(kjahdskjh == {});
+  console.log(Object.keys(kjahdskjh).length);
+*/
   /*
   useEffect(() => {
     if (accountData.initialized === true) {
@@ -84,7 +130,7 @@ const AccountContextProvider = props => {
   //console.log(accountData);
 
   const refreshAccountData = (inputToken = null) => {
-    console.log("Refreshing ---------------------");
+    console.log('Refreshing ---------------------');
     const token = accountState.token || inputToken;
     //console.log('token is', token);
     if (!token) {
