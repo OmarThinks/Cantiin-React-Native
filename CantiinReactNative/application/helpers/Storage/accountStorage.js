@@ -19,6 +19,10 @@ const getDataJSON = async key => {
 
 const storeData = async (key, value) => {
   try {
+    if (value === null) {
+      await AsyncStorage.removeItem(key);
+      return;
+    }
     await AsyncStorage.setItem(key, value);
   } catch (e) {
     // saving error
