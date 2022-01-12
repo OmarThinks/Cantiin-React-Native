@@ -24,12 +24,16 @@ const AccountContextProvider = props => {
     initialized: false,
   });
 
+
+  console.log("Current Account State --------------------");
+  console.log(accountState);
   useEffect(() => {
     if (accountState.initialized === false) {
       (async () => {
+        console.log('EFFECT: setting account state -------------------');
         const token = await getToken();
         const userData = await getUserData();
-        console.log("Stored data", token, userData);
+        console.log('Stored data', token, userData);
         setAccountState({
           userData,
           token,
@@ -39,12 +43,13 @@ const AccountContextProvider = props => {
     }
   });
 
-
-  
   useEffect(() => {
     if (accountState.initialized === true) {
+      console.log('EFFECT: Storing Account Data and Token--------------------');
+
       storeToken(accountState.token);
       storeUserdata(accountState.userData);
+      console.log(accountState.token, accountState.userData);
     }
   }, [accountState]);
 
@@ -79,6 +84,7 @@ const AccountContextProvider = props => {
   //console.log(accountData);
 
   const refreshAccountData = (inputToken = null) => {
+    console.log("Refreshing ---------------------");
     const token = accountState.token || inputToken;
     //console.log('token is', token);
     if (!token) {
@@ -93,14 +99,14 @@ const AccountContextProvider = props => {
       cookie: `sessionid=${token}`,
     })
       .then(res => {
-        console.log("refresh response", res);
-        if(res.status === 401){
+        console.log('refresh response', res);
+        if (res.status === 401) {
           setAccountState({...accountState, token: null, userData: null});
           return;
         }
 
         res.json().then(resJSON => {
-          console.log("refresh", resJSON);
+          console.log('refresh', resJSON);
           setAccountState({...accountState, userData: resJSON, token: token});
         });
       })

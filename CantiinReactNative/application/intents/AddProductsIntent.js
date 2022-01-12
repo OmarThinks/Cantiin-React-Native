@@ -8,7 +8,7 @@ import {AccountContext} from '../contexts/AccountContext';
 // productName, productPrice, productInStock
 export default function AddProductsIntent({navigation}) {
   // Input Fields
-  console.log(navigation);
+  //console.log(navigation);
   const [productName, setProductName] = React.useState('');
   const [productPrice, setProductPrice] = React.useState('');
   const [productInStock, setProductInStock] = React.useState(true);
@@ -18,7 +18,7 @@ export default function AddProductsIntent({navigation}) {
 
   // Fields errors
   const [errors, setErrors] = React.useState({name: [''], price: ['']});
-  console.log('errors', errors);
+  //console.log('errors', errors);
   const resetErrors = () => {
     setErrors({name: [''], price: ['']});
     setFailureText('');
@@ -38,7 +38,7 @@ export default function AddProductsIntent({navigation}) {
   ) : (
     <Fragment />
   );
-  console.log('ajhjhasdgjh');
+  //console.log('ajhjhasdgjh');
   const handleAddProductPress = () => {
     setLoading(true);
     resetErrors();
@@ -55,12 +55,12 @@ export default function AddProductsIntent({navigation}) {
       },
     )
       .then(data => {
-        console.log(data);
+        //console.log(data);
         if (data.status == 201) {
           navigation.pop();
         } else {
           data.json().then(responseJson => {
-            console.log(setErrors({...errors, ...responseJson}));
+              setErrors({...errors, ...responseJson});
           });
         }
       })

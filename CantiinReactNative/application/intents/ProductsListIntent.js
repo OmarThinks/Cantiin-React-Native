@@ -102,14 +102,14 @@ export default function ProductsListIntent({navigation}) {
         return data.json();
       })
       .then(function (responseOfRequest) {
-        console.log(responseOfRequest);
+        //console.log(responseOfRequest);
         setLoading(false);
         setRequestError(false);
         setResponse(responseOfRequest);
         //console.log(responseOfRequest.data);
       })
       .catch(() => {
-        console.log('Fetch Failed');
+        //console.log('Fetch Failed');
         setRequestError(true);
         setLoading(false);
       });
@@ -119,7 +119,7 @@ export default function ProductsListIntent({navigation}) {
     loadPage();
   }, [currentPage]);
 
-  console.log('loading', loading);
+  //console.log('loading', loading);
 
   //let nextDisabled = false,prevDisabled = false;
 
@@ -140,7 +140,7 @@ export default function ProductsListIntent({navigation}) {
 
   //console.log(nextDisabled, prevDisabled);
 
-  console.log('response', response);
+  //console.log('response', response);
 
   if (requestError) {
     return (

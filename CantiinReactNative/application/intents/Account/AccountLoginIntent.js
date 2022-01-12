@@ -15,7 +15,7 @@ export default function AccountLoginIntent() {
 
   const {accountData, setAccountToken} =
     useContext(AccountContext);
-  console.log('accountData', accountData);
+  //console.log('accountData', accountData);
 
   const handleLoginPress = () => {
     setLoading(true);
@@ -39,7 +39,7 @@ export default function AccountLoginIntent() {
           });
           //console.log(cookieData);
           const token = cookieData['Secure, sessionid'];
-          console.log(token);
+          //console.log(token);
           //console.log(cookieData['Secure, sessionid']);
           setAccountToken(token);
         }

@@ -16,7 +16,7 @@ export default function AccountLogoutIntent() {
   const displayedUsernameText = `Your Username: ${accountData.userData.username}`;
   let additionalContent = <Fragment />;
   if (accountData.userData != null) {
-    console.log('accountData is', accountData.userData.id);
+    //console.log('accountData is', accountData.userData.id);
     additionalContent = (
       <Fragment>
         <Text style={{...styles.userData}}>{displayedUsernameText}</Text>
@@ -38,12 +38,14 @@ export default function AccountLogoutIntent() {
       cookie: `sessionid=${token}`,
     })
       .then(data => {
-        console.log(data);
+        //console.log(data);
         logoutAccount();
-        data.json().then((dataJson)=>{console.log("Handle Logout Press",dataJson);})
+        data.json().then((dataJson)=>{
+          //console.log("Handle Logout Press",dataJson);
+      })
       })
       .catch(() => {
-        console.log('logout failed');
+        //console.log('logout failed');
         setFailText(
           'Something went wrong, Try again later, maybe you are not connected to the internet',
         );
