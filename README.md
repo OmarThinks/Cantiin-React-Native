@@ -51,3 +51,17 @@ To control the application in the emulator, **`ctrl + m`**
 <img src="pictures/screenshot5.png" width=270 height=480 />
 
 
+
+
+
+
+# Attribution:
+
+## 1) Logo:
+
+
+I got it from https://www.flaticon.com/premium-icon/shop_2981297   
+**FlatIcon.com**
+
+
+<img src="Logo/shop.png" width=100 height=100>
