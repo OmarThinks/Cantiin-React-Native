@@ -152,6 +152,15 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+
+        release {
+            if (project.hasProperty('cantiin-react-native.jks')) {
+                storeFile file('cantiin-react-native.jks')
+                storePassword 'RnwF21QmdvK'
+                keyAlias 'key0'
+                keyPassword 'RnwF21QmdvK'
+            }
+        }
     }
     buildTypes {
         debug {
