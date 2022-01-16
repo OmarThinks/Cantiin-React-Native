@@ -40,18 +40,104 @@ To control the application in the emulator, **`ctrl + m`**
 
 # B) How it works:
 
-1. It communicates with a RESTful API at https://www.cantiin.com/api/products/, and it paginates through the list of products.
-
-<img src="pictures/screenshot1.png" width=270 height=480 />
-<img src="pictures/screenshot2.png" width=270 height=480 />
-<img src="pictures/screenshot3.png" width=270 height=480 />
 
 
-2. If something went wrong while sending the request (For example: No internet connection), It will show a messgae, and you can always refresh the page
+- **It communicates with a RESTful API at https://www.cantiin.com/api/products/, and it paginates through the list of products.**
+
+<img src="pictures/ScreenShot_01.png" width=270 height=480 />
 
 
-<img src="pictures/screenshot4.png" width=270 height=480 />
-<img src="pictures/screenshot5.png" width=270 height=480 />
+- You can Log in
+
+<br>
+<img src="pictures/ScreenShot_02.png" width=270 height=480 />
+<img src="pictures/ScreenShot_03.png" width=270 height=480 />
+
+
+- If you logged in, you will see your username in the account intent, and the ability to log out.
+
+
+
+<img src="pictures/ScreenShot_04.png" width=270 height=480 />
+
+
+
+
+- Now that you are logged in, the Products list will hav the option to add a new product, 
+from FAB (Floating Action Button) on the bottom right of the page.
+
+
+
+<img src="pictures/ScreenShot_05.png" width=270 height=480 />
+
+
+- Logged in ore now, you acn paginate through the products pages
+
+<img src="pictures/ScreenShot_06.png" width=270 height=480 />
+<img src="pictures/ScreenShot_07.png" width=270 height=480 />
+
+
+
+- This is how you can create a new product
+
+<img src="pictures/ScreenShot_08.png" width=270 height=480 />
+
+
+- There is validation in the restful API
+
+
+<img src="pictures/ScreenShot_09.png" width=270 height=480 />
+<img src="pictures/ScreenShot_10.png" width=270 height=480 />
+
+
+
+
+
+
+
+
+# C) No Internet Connection:
+
+- If something went wrong while sending the request (For example: No internet connection), It will show a messgae, and you can always refresh the page or resend the request.
+
+
+
+
+## No Internet: Products List:
+<img src="pictures/ScreenShot_14.png" width=270 height=480 />
+
+## No Internet: Log In:
+<img src="pictures/ScreenShot_17.png" width=270 height=480 />
+<img src="pictures/ScreenShot_18.png" width=270 height=480 />
+
+
+
+
+## No Internet: Log Out:
+<img src="pictures/ScreenShot_15.png" width=270 height=480 />
+<img src="pictures/ScreenShot_16.png" width=270 height=480 />
+
+
+
+
+
+## No Internet: Craete Product:
+
+
+<img src="pictures/ScreenShot_12.png" width=270 height=480 />
+<img src="pictures/ScreenShot_13.png" width=270 height=480 />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
