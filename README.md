@@ -1,8 +1,11 @@
 # Cantiin-React-Native
+
+**Watch video on Youtube: https://www.youtube.com/watch?v=16v0MCEKS-c**
+
+
 Creating an android application for cantiin
 
 
-**Watch video on Youtube: https://www.youtube.com/watch?v=4nlIVCSuJrw**
 
 
 # A) How to run:
