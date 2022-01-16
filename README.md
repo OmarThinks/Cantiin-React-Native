@@ -44,21 +44,21 @@ To control the application in the emulator, **`ctrl + m`**
 
 - **It communicates with a RESTful API at https://www.cantiin.com/api/products/, and it paginates through the list of products.**
 
-<img src="pictures/ScreenShot_01.png" width=270 height=480 />
+<img src="pictures/Screenshot_01.png" width=270 height=480 />
 
 
 - You can Log in
 
 <br>
-<img src="pictures/ScreenShot_02.png" width=270 height=480 />
-<img src="pictures/ScreenShot_03.png" width=270 height=480 />
+<img src="pictures/Screenshot_02.png" width=270 height=480 />
+<img src="pictures/Screenshot_03.png" width=270 height=480 />
 
 
 - If you logged in, you will see your username in the account intent, and the ability to log out.
 
 
 
-<img src="pictures/ScreenShot_04.png" width=270 height=480 />
+<img src="pictures/Screenshot_04.png" width=270 height=480 />
 
 
 
@@ -68,26 +68,26 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 
-<img src="pictures/ScreenShot_05.png" width=270 height=480 />
+<img src="pictures/Screenshot_05.png" width=270 height=480 />
 
 
 - Logged in ore now, you acn paginate through the products pages
 
-<img src="pictures/ScreenShot_06.png" width=270 height=480 />
-<img src="pictures/ScreenShot_07.png" width=270 height=480 />
+<img src="pictures/Screenshot_06.png" width=270 height=480 />
+<img src="pictures/Screenshot_07.png" width=270 height=480 />
 
 
 
 - This is how you can create a new product
 
-<img src="pictures/ScreenShot_08.png" width=270 height=480 />
+<img src="pictures/Screenshot_08.png" width=270 height=480 />
 
 
 - There is validation in the restful API
 
 
-<img src="pictures/ScreenShot_09.png" width=270 height=480 />
-<img src="pictures/ScreenShot_10.png" width=270 height=480 />
+<img src="pictures/Screenshot_09.png" width=270 height=480 />
+<img src="pictures/Screenshot_10.png" width=270 height=480 />
 
 
 
@@ -104,18 +104,18 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 ## No Internet: Products List:
-<img src="pictures/ScreenShot_14.png" width=270 height=480 />
+<img src="pictures/Screenshot_14.png" width=270 height=480 />
 
 ## No Internet: Log In:
-<img src="pictures/ScreenShot_17.png" width=270 height=480 />
-<img src="pictures/ScreenShot_18.png" width=270 height=480 />
+<img src="pictures/Screenshot_17.png" width=270 height=480 />
+<img src="pictures/Screenshot_18.png" width=270 height=480 />
 
 
 
 
 ## No Internet: Log Out:
-<img src="pictures/ScreenShot_15.png" width=270 height=480 />
-<img src="pictures/ScreenShot_16.png" width=270 height=480 />
+<img src="pictures/Screenshot_15.png" width=270 height=480 />
+<img src="pictures/Screenshot_16.png" width=270 height=480 />
 
 
 
@@ -124,8 +124,8 @@ from FAB (Floating Action Button) on the bottom right of the page.
 ## No Internet: Craete Product:
 
 
-<img src="pictures/ScreenShot_12.png" width=270 height=480 />
-<img src="pictures/ScreenShot_13.png" width=270 height=480 />
+<img src="pictures/Screenshot_12.png" width=270 height=480 />
+<img src="pictures/Screenshot_13.png" width=270 height=480 />
 
 
 
