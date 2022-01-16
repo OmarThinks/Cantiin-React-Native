@@ -7,9 +7,18 @@ Creating an android application for cantiin
 
 
 
+# A) Used Technologies:
 
-# A) How to run:
-## A-1) Preparing react native:
+1. React
+2. React native
+3. React Native Paper
+4. Async Storage
+5. React Navigation
+
+
+
+# B) How to run:
+## B-1) Preparing react native:
 
 
 In the CLI, run this code:
@@ -21,7 +30,7 @@ npm install
 npm start
 ```
 
-## A-2) Running the application:
+## B-2) Running the application:
 
 
 Open **another** commandline interface window, and run this command:
@@ -33,7 +42,7 @@ npx react-native run-android
 
 **OR** go the android studio, and run the application on the emulator.
 
-## A-3) Debugging:
+## B-3) Debugging:
 
 Run the application with React-Native Debugger.  
 To control the application in the emulator, **`ctrl + m`**
@@ -41,7 +50,7 @@ To control the application in the emulator, **`ctrl + m`**
 
 
 
-# B) How it works:
+# C) How it works:
 
 
 
@@ -99,7 +108,7 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 
-# C) No Internet Connection:
+# D) No Internet Connection:
 
 - If something went wrong while sending the request (For example: No internet connection), It will show a messgae, and you can always refresh the page or resend the request.
 
