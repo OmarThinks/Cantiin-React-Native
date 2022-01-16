@@ -8,10 +8,13 @@ Creating an android application for cantiin
 # A) How to run:
 ## A-1) Preparing react native:
 
+
 In the CLI, run this code:
 
 ```bash
-export NODE_OPTIONS=--openssl-legacy-provider
+git clone https://github.com/OmarThinks/Cantiin-React-Native
+cd Cantiin-React-Native
+npm install
 npm start
 ```
 
