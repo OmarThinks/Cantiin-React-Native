@@ -147,9 +147,13 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 
+# E) Privacy Policy:
 
+https://www.termsfeed.com/live/795fd535-3328-4dbc-815f-9ca3e163b869
 
-
+<!--
+https://app.termsfeed.com/download/795fd535-3328-4dbc-815f-9ca3e163b869
+-->
 
 
 
