@@ -1,5 +1,9 @@
 # Cantiin-React-Native
 
+
+
+# A) Links:
+
 **Watch video on Youtube: https://www.youtube.com/watch?v=16v0MCEKS-c**
 
 
@@ -7,7 +11,7 @@ Creating an android application for cantiin
 
 
 
-# A) Used Technologies:
+# B) Used Technologies:
 
 1. React
 2. React native
@@ -17,8 +21,8 @@ Creating an android application for cantiin
 
 
 
-# B) How to run:
-## B-1) Preparing react native:
+# C) How to run:
+## C-1) Preparing react native:
 
 
 In the CLI, run this code:
@@ -30,7 +34,7 @@ npm install
 npm start
 ```
 
-## B-2) Running the application:
+## C-2) Running the application:
 
 
 Open **another** commandline interface window, and run this command:
@@ -42,7 +46,7 @@ npx react-native run-android
 
 **OR** go the android studio, and run the application on the emulator.
 
-## B-3) Debugging:
+## C-3) Debugging:
 
 Run the application with React-Native Debugger.  
 To control the application in the emulator, **`ctrl + m`**
@@ -50,7 +54,7 @@ To control the application in the emulator, **`ctrl + m`**
 
 
 
-# C) How it works:
+# D) How it works:
 
 
 
@@ -108,7 +112,7 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 
-# D) No Internet Connection:
+# E) No Internet Connection:
 
 - If something went wrong while sending the request (For example: No internet connection), It will show a messgae, and you can always refresh the page or resend the request.
 
@@ -147,7 +151,7 @@ from FAB (Floating Action Button) on the bottom right of the page.
 
 
 
-# E) Privacy Policy:
+# F) Privacy Policy:
 
 https://www.termsfeed.com/live/795fd535-3328-4dbc-815f-9ca3e163b869
 
