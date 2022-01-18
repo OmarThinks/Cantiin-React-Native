@@ -7,6 +7,48 @@
 **Watch video on Youtube: https://www.youtube.com/watch?v=16v0MCEKS-c**
 
 
+
+
+
+<table>
+<tr>
+<th>Link Type</th>
+<th>Link</th>
+</tr>
+
+<tr>
+<th>Google Play Store</th>
+<td>
+
+https://play.google.com/store/apps/details?id=com.cantiinreactnative
+</td>
+</tr>
+
+<tr>
+<th>Youtube</th>
+<td>
+
+https://www.youtube.com/watch?v=16v0MCEKS-c
+</td>
+</tr>
+
+<tr>
+<th>Github Repository</th>
+<td>
+
+https://github.com/OmarThinks/Cantiin-React-Native
+</td>
+</tr>
+
+
+
+</table>
+
+
+
+
+
+
 Creating an android application for cantiin
 
 
