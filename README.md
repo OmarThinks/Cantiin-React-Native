@@ -19,24 +19,22 @@
 <tr>
 <th>Google Play Store</th>
 <td>
-
-https://play.google.com/store/apps/details?id=com.cantiinreactnative
+<a href="https://play.google.com/store/apps/details?id=com.cantiinreactnative">
+https://play.google.com/store/apps/details?id=com.cantiinreactnative</a>
 </td>
 </tr>
 
 <tr>
 <th>Youtube</th>
 <td>
-
-https://www.youtube.com/watch?v=16v0MCEKS-c
+<a href="https://www.youtube.com/watch?v=16v0MCEKS-c">https://www.youtube.com/watch?v=16v0MCEKS-c</a>
 </td>
 </tr>
 
 <tr>
 <th>Github Repository</th>
 <td>
-
-https://github.com/OmarThinks/Cantiin-React-Native
+<a href="https://github.com/OmarThinks/Cantiin-React-Native">https://github.com/OmarThinks/Cantiin-React-Native</a>
 </td>
 </tr>
 
