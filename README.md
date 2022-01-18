@@ -4,9 +4,6 @@
 
 # A) Links:
 
-**Watch video on Youtube: https://www.youtube.com/watch?v=16v0MCEKS-c**
-
-
 
 
 
@@ -32,6 +29,14 @@ https://play.google.com/store/apps/details?id=com.cantiinreactnative</a>
 </tr>
 
 <tr>
+<th>RESTful API backend Link</th>
+<td>
+<a href="https://cantiin.com/api">https://cantiin.com/api</a>
+</td>
+</tr>
+
+
+<tr>
 <th>Github Repository</th>
 <td>
 <a href="https://github.com/OmarThinks/Cantiin-React-Native">https://github.com/OmarThinks/Cantiin-React-Native</a>
@@ -39,12 +44,7 @@ https://play.google.com/store/apps/details?id=com.cantiinreactnative</a>
 </tr>
 
 
-<tr>
-<th>RESTful API backend Link</th>
-<td>
-<a href="https://cantiin.com/api">https://cantiin.com/api</a>
-</td>
-</tr>
+
 
 
 
